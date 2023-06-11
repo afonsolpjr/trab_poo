@@ -1,7 +1,8 @@
 
 
 
-# Recurso
+# Recurso 
+
 Classe abstrata que tem os seguintes atributos:
 ● ID, que armazena o ID único do recurso;
 ● url_recurso, que armazena o caminho que o recurso está disponível.
@@ -12,6 +13,10 @@ Esta classe também tem o método abstrato validaUrlRecurso, com retorno boolean
 Só é possível criar um Recurso com uma url válida.
 
 # Video
+## A fazer:
+- [] Implementar validaUrlRecurso
+
+
 Classe que herda de Recurso e adiciona os seguintes atributos:
 ● frame_rate, que armazena a taxa de frames por segundo
 ● duracao, que armazena o tamanho do recurso em segundos
@@ -23,6 +28,11 @@ URL termina em ‘.mp4’, ‘.mov’ ou ‘.wmv’. Caso seja uma dessas extens
 Caso contrário, não é válida.
 
 # Foto
+## A fazer:
+- [] Implementar validaUrlRecurso
+
+
+
 Classe que herda de Recurso e adiciona o seguinte atributo:
 ● resolução, que armazena a resolução da foto.
 Esta classe implementa o método validaUrlRecurso comparando se a extensão da
@@ -30,11 +40,23 @@ URL termina em '.jpg', ‘.png' e ‘.bmp’. Caso seja uma dessas extensões, a
 Caso contrário, não é válida.
 
 # Postavel
+## A fazer:
+- [] Criar arquivo e definições de atributos/métodos
+- [] Implementar método posta()          (sinceramente, o que é postar aqui no trabalho ? kk)
+- [] Implementar método comenta()             
+
 A interface Postavel é a interface que permite aos diferentes tipos de posts serem
 vistos como posts. Ela tem os métodos posta e comenta, ambos sem argumentos que
 retornem se a operação foi realizada com sucesso ou não.
 
 # PostVideo
+## A fazer:
+- [] Criar arquivo e definições de atributos/metodos
+- [] Getters e setters pertinentes
+- [] Implementar adicionaVideo
+- [] Implementar posta
+- [] Implementar comenta
+
 A classe PostVideo representa uma postagem com um único video. Ela tem os
 seguintes atributos:
 
@@ -57,6 +79,14 @@ na lista_comentarios do objeto.
 
 
 # PostFoto
+## A fazer:
+- [] Criar arquivo e definições de atributos/metodos
+- [] Getters e setters pertinentes
+- [] Implementar adicionaFoto
+- [] Implementar excluiFoto
+- [] Implementar posta
+- [] Implementar comenta
+
 A classe PostFoto representa uma postagem com uma sequência de fotos. Ela tem
 os seguintes atributos:
 
@@ -81,6 +111,10 @@ usuário e o tamanho da mensagem. Esse comentário criado é armazenado
 na lista_comentarios do objeto.
 
 # Comentario
+## A fazer:
+- [] Criar arquivo e definições de atributos/metodos
+- [] Getters e setters pertinentes
+
 A classe Comentario contém as informações de um comentário através dos
 seguintes atributos:
 
@@ -93,13 +127,33 @@ que os outros ou não;
 
 
 #  PostavelFactory
+## A fazer:
+- [] Implementar metodo getPostavel
+
+
 A classe PostavelFactory tem o método getPostavel que recebe uma String e
 retorna um objeto Postavel dependendo do argumento. Caso o argumento seja
 “POSTVIDEO”, este método cria um objeto da Classe PostVideo e caso argumento seja
 “POSTFOTO”, este método cria um objeto da Classe PostFoto. Caso contrário, o método
 retorna em estado de erro.
 
+
+
+
 # Classe de execução (Main):
+## A fazer:
+todos os testes kkkkkkk
+- [] Tentativa de postagem com texto
+- [] Tentativa de postagem com um vídeo atribuído
+- [] Tentativa de postagem sem vídeo
+- [] Tentativa de postagem sem foto
+- [] Tentativa de postagem com 5 fotos atribuídas
+- [] Tentativa de postagem com 11 fotos atribuídas
+- [] Tentativa de criação de comentário em uma postagem com foto
+- [] Tentativa de criação de comentário em uma postagem com vídeo
+- [] Tentativa de criação de vídeo inválido
+- [] Tentativa de criação de foto inválida
+
 
 A classe de execução do trabalho (Main) deverá ter pelo menos os seguintes testes:
 ● Tentativa de postagem com texto
