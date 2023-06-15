@@ -109,29 +109,53 @@ public static void main(String[] args)
 
     private static void testpost_semfoto()
     {
-	// PostFoto post = new PostFoto();
-	// try
-	// {
-	// 	post.posta();
-	// }
-	// catch (ToofewException e)
-	// {
-	// 	System.out.println("Erro: "+e);
-	// }
-	// catch (ToomanyException e)
-	// {
-	// 	System.out.println("Erro:"+e);
-	// }
+	PostFoto post = new PostFoto();
+	try
+	{
+	        post.posta();
+	}
+	catch (TooFewException e)
+	{
+	        System.out.println("Erro: "+e);
+	}
+	catch (TooManyException e)
+	{
+		System.out.println("Erro:"+e);
+	}
     }
 
     private static void testpost_5fotos()
     {
         Postavel post = PostavelFactory.getPostavel("POSTFOTO");
+	try
+	{
+	        post.posta();
+	}
+	catch (TooFewException e)
+	{
+	        System.out.println("Erro: "+e);
+	}
+	catch (TooManyException e)
+	{
+		System.out.println("Erro:"+e);
+	}
     }
 
     private static void testpost_11fotos()
     {
-
+        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
+	try
+	{
+	        post.posta();
+	}
+	catch (TooFewException e)
+	{
+	        System.out.println("Erro: "+e);
+	}
+	catch (TooManyException e)
+	{
+		System.out.println("Erro:"+e);
+	}
     }
 
     private static void testcoment_foto()
