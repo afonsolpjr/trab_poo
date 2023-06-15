@@ -6,7 +6,6 @@ public class Foto extends Recurso{
     private String resolucao;
 
 
-
     public String getResolucao()
     {
         return this.resolucao;

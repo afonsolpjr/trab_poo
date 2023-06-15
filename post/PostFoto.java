@@ -56,9 +56,17 @@ public class PostFoto extends Postavel
 		return false;
 	}
 
-	public Foto getFoto(int indice)
+	public Foto getFoto(int id) //retorna foto pelo id informado dela. Será que isso nao deveria estar em recurso?
 	{
-		return fotos.get(indice);
+		int i;
+		for(i=0;i<fotos.size();i++)
+		{
+			if(fotos.get(i).getID() == id)
+			{
+				return fotos.get(i);
+			}
+		}
+		return null;
 	}
 
 	// public boolean posta() throws ToofewException,ToomanyException
@@ -92,28 +100,29 @@ public class PostFoto extends Postavel
 		return true;
 	}
 	
-	public int getQtde_fotos()
-	{
-		return this.qtde_fotos;
-	}
 
 	public void printaFotos()
 	{
 		if(this.qtde_fotos==0)
 		{
-			System.out.println("\n[*~*~ Não há fotos nesta postagem. *~*~]\n");
+			System.out.println("\n\t[*~*~ Não há fotos nesta postagem. *~*~]\n");
 		}
 		else
 		{
 			int i;
-			System.out.println("[*~*~*~Lista de fotos*~*~*~]\n");
+			System.out.println("[*~*~*~Lista de fotos*~*~*~]");
 			for(i=0;i<this.qtde_fotos;i++)
 			{
-				System.out.println("\n\t[" + fotos.get(i).getID() +
+				System.out.println("\n\t[Id:" + fotos.get(i).getID() +
 					"] URL: " +
 					fotos.get(i).getUrl());
 			}
 		}
+	}
+	
+	public int getQtdFotos()
+	{
+		return this.qtde_fotos;
 	}
 
 }

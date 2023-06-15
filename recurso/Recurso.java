@@ -8,6 +8,12 @@ public abstract class Recurso{
 
     public abstract boolean validaUrlRecurso(String url);
 
+    public Recurso()
+    {
+        this.ID = Recurso.getProxID();
+        Recurso.prox_ID++;
+    }
+
     public int getID()
     {
         return this.ID;

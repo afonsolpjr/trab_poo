@@ -198,3 +198,9 @@ membros, sendo pelo menos 2 deles métodos com explicação.
 # alteracoes
 
 POSTAVEL virou classe abstrata, e PostFoto e PostVideo herda dela
+PostFoto tem um get foto (pelo id da foto)
+PostFoto tem uma funcao para mostrar lista de fotos
+PostFoto tem getQtdFotos
+PostFoto com construtor para inicializar qtdfotos = 0
+
+PostavelFactory tem dois metodos separados para criar PostFoto e PostVideo

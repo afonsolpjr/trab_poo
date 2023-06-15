@@ -3,6 +3,7 @@ import java.util.Scanner;
 import trab_poo.post.*;
 import trab_poo.recurso.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 
 public class Main {
@@ -10,7 +11,9 @@ public class Main {
 public static void main(String[] args)
 {
     int opcao;
+    Postavel post;
     ArrayList<PostFoto> post_fotos = new ArrayList<PostFoto>();
+    ArrayList<PostVideo> post_videos = new ArrayList<PostVideo>();
     Scanner input = new Scanner(System.in);
 
     opcao = -1;
@@ -27,10 +30,23 @@ public static void main(String[] args)
             "\n\t[7] Tentativa de criação de comentário em uma postagem com foto" +
             "\n\t[8] Tentativa de criação de comentário em uma postagem com vídeo" +
             "\n\t[9] Tentativa de criação de vídeo inválido" +
-            "\n\t[10] Tentativa de criação de foto inválida\n" +
-            "Insira o numero da opção: ");
-
-        opcao = input.nextInt();
+            "\n\t[10] Tentativa de criação de foto inválida" +
+            "\n\tou [0] para sair." +
+            "\nInsira o numero da opção: ");
+        
+        try //validando entrada do usuario
+        {
+                opcao = input.nextInt();
+                if(opcao<0 || opcao>10)
+                {
+                        throw new InputMismatchException();
+                }
+        }
+        catch(InputMismatchException e)
+        {
+                input.next();
+                System.out.println("\n\t[Insira um valor válido!]");
+        }
         
         switch(opcao)
         {
@@ -38,6 +54,7 @@ public static void main(String[] args)
         case 1:
                 break;
         case 2:
+                testpost_video();
                 break;
         case 3:
                 break;
@@ -82,7 +99,7 @@ public static void main(String[] args)
 
     private static void testpost_video()
     {
-
+        PostavelFactory.getPostavel("POSTVIDEO");
     }
 
     private static void testpost_semvideo()
