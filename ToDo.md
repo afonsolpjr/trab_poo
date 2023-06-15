@@ -29,7 +29,7 @@ Caso contrário, não é válida.
 
 # Foto
 ## A fazer:
-- [] Implementar validaUrlRecurso
+- [] Implementar validaUrlRecurso, função a ser chamada no construtor 
 
 
 
@@ -41,7 +41,7 @@ Caso contrário, não é válida.
 
 # Postavel
 ## A fazer:
-- [] Criar arquivo e definições de atributos/métodos
+- [x] Criar arquivo e definições de atributos/métodos
 - [] Implementar método posta()          (sinceramente, o que é postar aqui no trabalho ? kk)
 - [] Implementar método comenta()             
 
@@ -51,7 +51,7 @@ retornem se a operação foi realizada com sucesso ou não.
 
 # PostVideo
 ## A fazer:
-- [] Criar arquivo e definições de atributos/metodos
+- [x] Criar arquivo e definições de atributos/metodos
 - [] Getters e setters pertinentes
 - [] Implementar adicionaVideo
 - [] Implementar posta
@@ -80,12 +80,12 @@ na lista_comentarios do objeto.
 
 # PostFoto
 ## A fazer:
-- [] Criar arquivo e definições de atributos/metodos
-- [] Getters e setters pertinentes
-- [] Implementar adicionaFoto
-- [] Implementar excluiFoto
+- [x] Criar arquivo e definições de atributos/metodos
+- [] Getters e setters pertinentes (qtdfotos)
+- [x] Implementar adicionaFoto
+- [x] Implementar excluiFoto
 - [] Implementar posta
-- [] Implementar comenta
+- [x] Implementar comenta
 
 A classe PostFoto representa uma postagem com uma sequência de fotos. Ela tem
 os seguintes atributos:
@@ -112,7 +112,7 @@ na lista_comentarios do objeto.
 
 # Comentario
 ## A fazer:
-- [] Criar arquivo e definições de atributos/metodos
+- [x] Criar arquivo e definições de atributos/metodos
 - [] Getters e setters pertinentes
 
 A classe Comentario contém as informações de um comentário através dos
@@ -128,7 +128,7 @@ que os outros ou não;
 
 #  PostavelFactory
 ## A fazer:
-- [] Implementar metodo getPostavel
+- [afonso~fazendo] Implementar metodo getPostavel
 
 
 A classe PostavelFactory tem o método getPostavel que recebe uma String e
@@ -144,8 +144,8 @@ retorna em estado de erro.
 ## A fazer:
 todos os testes kkkkkkk
 - [] Tentativa de postagem com texto
-- [] Tentativa de postagem com um vídeo atribuído
-- [] Tentativa de postagem sem vídeo
+- [x] Tentativa de postagem com um vídeo atribuído
+- [x] Tentativa de postagem sem vídeo
 - [] Tentativa de postagem sem foto
 - [] Tentativa de postagem com 5 fotos atribuídas
 - [] Tentativa de postagem com 11 fotos atribuídas

@@ -22,4 +22,16 @@ public abstract class Recurso{
     {
         return Recurso.prox_ID;
     }
+
+    public boolean setURL(String url)
+    {
+        if(this.validaUrlRecurso(url))
+        {
+            this.url_recurso = url;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 }
