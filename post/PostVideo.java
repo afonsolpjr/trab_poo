@@ -2,9 +2,10 @@ package trab_poo.post;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-import trab_poo.post.PostFoto.Comentario;
+import trab_poo.post.PostFoto;
+import trab_poo.recurso.Video;
 
-public class PostVideo implements Postavel
+public class PostVideo extends Postavel
 {
 	private Video video;
 	private LocalDateTime data_postagem = LocalDateTime.now();

@@ -2,12 +2,15 @@ package trab_poo;
 import java.util.Scanner;
 import trab_poo.post.*;
 import trab_poo.recurso.*;
+import java.util.ArrayList;
+
 
 public class Main {
     
 public static void main(String[] args)
 {
     int opcao;
+    ArrayList<PostFoto> post_fotos = new ArrayList<PostFoto>();
     Scanner input = new Scanner(System.in);
 
     opcao = -1;
@@ -42,8 +45,10 @@ public static void main(String[] args)
 		testpost_semfoto();
                 break;
         case 5:
+                testpost_5fotos();
                 break;
         case 6:
+                testpost_11fotos();
                 break;
         case 7:
                 break;
@@ -87,24 +92,24 @@ public static void main(String[] args)
 
     private static void testpost_semfoto()
     {
-	PostFoto post = new PostFoto();
-	try
-	{
-		post.posta();
-	}
-	catch (ToofewException e)
-	{
-		System.out.println("Erro: "+e);
-	}
-	catch (ToomanyException e)
-	{
-		System.out.println("Erro:"+e);
-	}
+	// PostFoto post = new PostFoto();
+	// try
+	// {
+	// 	post.posta();
+	// }
+	// catch (ToofewException e)
+	// {
+	// 	System.out.println("Erro: "+e);
+	// }
+	// catch (ToomanyException e)
+	// {
+	// 	System.out.println("Erro:"+e);
+	// }
     }
 
     private static void testpost_5fotos()
     {
-
+        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
     }
 
     private static void testpost_11fotos()

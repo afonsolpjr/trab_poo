@@ -23,7 +23,7 @@ class Comentario
 		}
 	}
 
-public class PostFoto implements Postavel
+public class PostFoto extends Postavel
 {
 	private int qtde_fotos;
 	private ArrayList<Foto> fotos = new ArrayList<Foto>();
@@ -56,22 +56,32 @@ public class PostFoto implements Postavel
 		return false;
 	}
 
-	public boolean posta() throws ToofewException,ToomanyException
+	public Foto getFoto(int indice)
 	{
-		if(this.fotos.size()==0)
-		{
-			throw new ToofewException();
-		}
-		else if(this.fotos.size() >10)
-		{
-			throw new ToomanyException();
-		}
-		else 
-		{
-			this.data_postagem = LocalDateTime.now();
-			System.out.println("Foto Postada com sucesso");
-			return true;
-		}
+		return fotos.get(indice);
+	}
+
+	// public boolean posta() throws ToofewException,ToomanyException
+	// {
+	// 	if(this.fotos.size()==0)
+	// 	{
+	// 		throw new TooFewException();
+	// 	}
+	// 	else if(this.fotos.size() >10)
+	// 	{
+	// 		throw new TooManyException();
+	// 	}
+	// 	else 
+	// 	{
+	// 		this.data_postagem = LocalDateTime.now();
+	// 		System.out.println("Foto Postada com sucesso");
+	// 		return true;
+	// 	}
+	// }
+	
+	public boolean posta()
+	{
+		return true;
 	}
 	
 	public boolean comenta()
@@ -81,9 +91,29 @@ public class PostFoto implements Postavel
 		this.listaComentarios.add(comentario);
 		return true;
 	}
+	
 	public int getQtde_fotos()
 	{
 		return this.qtde_fotos;
 	}
+
+	public void printaFotos()
+	{
+		if(this.qtde_fotos==0)
+		{
+			System.out.println("\n[*~*~ Não há fotos nesta postagem. *~*~]\n");
+		}
+		else
+		{
+			int i;
+			System.out.println("[*~*~*~Lista de fotos*~*~*~]\n");
+			for(i=0;i<this.qtde_fotos;i++)
+			{
+				System.out.println("\n\t["+(i+1)+"] URL: " +
+					fotos.get(i).getUrl());
+			}
+		}
+	}
+
 }
 

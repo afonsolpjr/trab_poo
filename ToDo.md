@@ -81,7 +81,7 @@ na lista_comentarios do objeto.
 # PostFoto
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/metodos
-- [] Getters e setters pertinentes (qtdfotos)
+- [] Getters e setters pertinentes 
 - [x] Implementar adicionaFoto
 - [x] Implementar excluiFoto
 - [] Implementar posta
@@ -192,3 +192,9 @@ membros, sendo pelo menos 2 deles métodos com explicação.
 ● Criação do Singleton de Configurações
 ● Classe dos usuários
 ● Uso de postagens temporárias
+
+
+
+# alteracoes
+
+POSTAVEL virou classe abstrata, e PostFoto e PostVideo herda dela

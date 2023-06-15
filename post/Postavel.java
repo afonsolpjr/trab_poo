@@ -1,7 +1,7 @@
-package Trab_final;
+package trab_poo.post;
 
-public interface Postavel
+public abstract class Postavel
 {
-	public boolean posta();
-	public boolean comenta();
+	public abstract boolean posta();
+	public abstract boolean comenta();
 }
