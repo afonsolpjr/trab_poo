@@ -42,8 +42,8 @@ Caso contrário, não é válida.
 # Postavel
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/métodos
-- [] Implementar método posta()          (sinceramente, o que é postar aqui no trabalho ? kk)
-- [] Implementar método comenta()             
+- [x] Implementar método posta()          (sinceramente, o que é postar aqui no trabalho ? kk)
+- [x] Implementar método comenta()             
 
 A interface Postavel é a interface que permite aos diferentes tipos de posts serem
 vistos como posts. Ela tem os métodos posta e comenta, ambos sem argumentos que
@@ -53,9 +53,9 @@ retornem se a operação foi realizada com sucesso ou não.
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/metodos
 - [] Getters e setters pertinentes
-- [] Implementar adicionaVideo
+- [x] Implementar adicionaVideo
 - [] Implementar posta
-- [] Implementar comenta
+- [x] Implementar comenta
 
 A classe PostVideo representa uma postagem com um único video. Ela tem os
 seguintes atributos:
@@ -84,7 +84,7 @@ na lista_comentarios do objeto.
 - [] Getters e setters pertinentes 
 - [x] Implementar adicionaFoto
 - [x] Implementar excluiFoto
-- [] Implementar posta
+- [x] Implementar posta
 - [x] Implementar comenta
 
 A classe PostFoto representa uma postagem com uma sequência de fotos. Ela tem
@@ -146,9 +146,9 @@ todos os testes kkkkkkk
 - [] Tentativa de postagem com texto
 - [x] Tentativa de postagem com um vídeo atribuído
 - [x] Tentativa de postagem sem vídeo
-- [] Tentativa de postagem sem foto
-- [] Tentativa de postagem com 5 fotos atribuídas
-- [] Tentativa de postagem com 11 fotos atribuídas
+- [x] Tentativa de postagem sem foto
+- [x] Tentativa de postagem com 5 fotos atribuídas
+- [x] Tentativa de postagem com 11 fotos atribuídas
 - [] Tentativa de criação de comentário em uma postagem com foto
 - [] Tentativa de criação de comentário em uma postagem com vídeo
 - [] Tentativa de criação de vídeo inválido
@@ -204,3 +204,5 @@ PostFoto tem getQtdFotos
 PostFoto com construtor para inicializar qtdfotos = 0
 
 PostavelFactory tem dois metodos separados para criar PostFoto e PostVideo
+O metodo abstrato posta da classe postavel agora dá throw em 2 Erros "TooManyException" e "ToofewException"
+Mais duas classes em post "TooManyException" e "ToofewException" para ter excessão personalizada
