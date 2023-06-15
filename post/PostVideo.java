@@ -1,7 +1,8 @@
-package Trab_final;
+package trab_poo.post;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import trab_poo.post.PostFoto.Comentario;
 
 public class PostVideo implements Postavel
 {
@@ -30,7 +31,4 @@ public class PostVideo implements Postavel
 		this.lista_comentarios.add(comentario);
 		return true;
 	}
-}
-class Video
-{
 }

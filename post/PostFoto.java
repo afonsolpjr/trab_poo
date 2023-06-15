@@ -3,15 +3,37 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import trab_poo.recurso.Foto;
 import java.time.LocalDateTime;
-public class PostFoto
+import java.time.LocalDate;
+
+class Comentario
+	{
+		private LocalDate data = LocalDate.now();
+		private boolean fixado;
+		private int tamanho;
+		private String texto;
+
+		protected Comentario(String texto)
+		{
+			this.texto = texto;
+			this.tamanho = texto.length();
+		}
+		protected int gettamanho()
+		{
+			return this.tamanho;
+		}
+	}
+
+public class PostFoto implements Postavel
 {
 	private int qtde_fotos;
 	private ArrayList<Foto> fotos = new ArrayList<Foto>();
 	private String localizacao;
 	private LocalDateTime data_postagem = LocalDateTime.now();
 	private ArrayList<Comentario> listaComentarios = new ArrayList<Comentario>();
+	
 	public PostFoto()
 	{
+		this.qtde_fotos=0;
 	}
 
 	public boolean adicionaFotos(Foto foto)
@@ -34,9 +56,22 @@ public class PostFoto
 		return false;
 	}
 
-	public boolean posta() //Quando aprendermos estado de erro vou implementar esse método
+	public boolean posta() throws ToofewException,ToomanyException
 	{
-		return true;
+		if(this.fotos.size()==0)
+		{
+			throw new ToofewException();
+		}
+		else if(this.fotos.size() >10)
+		{
+			throw new ToomanyException();
+		}
+		else 
+		{
+			this.data_postagem = LocalDateTime.now();
+			System.out.println("Foto Postada com sucesso");
+			return true;
+		}
 	}
 	
 	public boolean comenta()
@@ -46,4 +81,9 @@ public class PostFoto
 		this.listaComentarios.add(comentario);
 		return true;
 	}
+	public int getQtde_fotos()
+	{
+		return this.qtde_fotos;
+	}
 }
+
