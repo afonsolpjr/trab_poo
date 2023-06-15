@@ -1,5 +1,7 @@
 package trab_poo;
 import java.util.Scanner;
+import trab_poo.post.*;
+import trab_poo.recurso.*;
 
 public class Main {
     
@@ -37,6 +39,7 @@ public static void main(String[] args)
         case 3:
                 break;
         case 4:
+		testpost_semfoto();
                 break;
         case 5:
                 break;
@@ -84,7 +87,19 @@ public static void main(String[] args)
 
     private static void testpost_semfoto()
     {
-
+	PostFoto post = new PostFoto();
+	try
+	{
+		post.posta();
+	}
+	catch (ToofewException e)
+	{
+		System.out.println("Erro: "+e);
+	}
+	catch (ToomanyException e)
+	{
+		System.out.println("Erro:"+e);
+	}
     }
 
     private static void testpost_5fotos()
