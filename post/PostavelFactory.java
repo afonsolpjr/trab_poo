@@ -3,7 +3,7 @@ package trab_poo.post;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
+//import javax.lang.model.util.ElementScanner14;
 
 import trab_poo.recurso.Video;
 import trab_poo.recurso.Foto;
@@ -49,12 +49,13 @@ public class PostavelFactory {
                 "\t[1] Incluir foto\n" + 
                 "\t[2] Deletar foto\n" + 
                 "\t[3] Cancelar criação de post\n" +
+                "\t[4] Concluir criação de post\n" +
                 "\nSelecione : ");
             
             try /* Valida entrada do usuário */
             {
                 opcao = input.nextInt();
-                if(opcao<1 || opcao>3)
+                if(opcao<1 || opcao>4) //Adicionei o 4 à validação
                 {
                     input.next();
                     throw new InputMismatchException();
@@ -125,6 +126,9 @@ public class PostavelFactory {
             case 3:
                 post_foto = null;
                 return null;                    
+            
+            case 4: // Adicionei case 4
+                return post_foto;
             }
         }
         input.close();
