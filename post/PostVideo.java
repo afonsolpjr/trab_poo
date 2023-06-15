@@ -14,16 +14,24 @@ public class PostVideo extends Postavel
 	public PostVideo()
 	{
 	}
+	
 	public boolean adicionaVideo(Video video)
 	{
 		this.video=video;
 		return true;
 	}
+
+	public void removeVideo()
+	{
+		this.video = null;
+	}
+	
 	@Override
 	public boolean posta() //Quando vermos estado de excessão implementarei
 	{
 		return true;
 	}
+	
 	@Override
 	public boolean comenta() //Não sei se a prof vai querer que o comentario seja feito totalmente na função, ou se eu recebo ele como argumento
 	{
@@ -31,5 +39,23 @@ public class PostVideo extends Postavel
 		Comentario comentario = new Comentario(sc.next());
 		this.lista_comentarios.add(comentario);
 		return true;
+	}
+
+	public void printaVideo()
+	{
+		if(this.video == null)
+		{
+			System.out.println("\n\t[Não há vídeo atribuido a esta postagem.]");
+		}
+		else
+		{
+			System.out.println("\n\t[ID:" + this.video.getID() + "] " +
+			"URL: " + this.video.getUrl());
+		}
+	}
+
+	public Video getVideo()
+	{
+		return this.video;
 	}
 }

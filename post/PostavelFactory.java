@@ -1,9 +1,6 @@
 package trab_poo.post;
 
 import java.util.Scanner;
-
-import javax.lang.model.util.ElementScanner14;
-
 import trab_poo.recurso.Video;
 import trab_poo.recurso.Foto;
 
@@ -65,9 +62,7 @@ public class PostavelFactory {
 
                 if(foto.setURL(url))
                 {
-                    System.out.println("\n[Foto adicionada com sucesso!] teste url=  "+
-                     foto.getUrl() +
-                     "\n");
+                    System.out.println("\n[Foto adicionada com sucesso!]\n");
 
                     post_foto.adicionaFotos(foto);
                 }
@@ -98,6 +93,61 @@ public class PostavelFactory {
 
     private static PostVideo getPostVideo()
     {
-        return null;
+        int opcao=-1;
+        String url;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\n\t\t[*~*~Postagem com video*~*~]\n");
+
+        PostVideo post_video = new PostVideo();
+
+        while(opcao!=3)
+        {
+            
+            post_video.printaVideo();
+
+            System.out.println("\n[Opções]:\n" + 
+                "\t[1] Incluir video\n" + 
+                "\t[2] Deletar video\n" + 
+                "\t[3] Cancelar criação de post\n" +
+                "\n\t Selecione : ");
+
+            opcao = input.nextInt();
+            
+            switch(opcao)
+            {
+            case 1:
+                if(post_video.getVideo()==null)
+                {
+                    System.out.println("\n[Já existe um vídeo incluido.]");
+                }
+                System.out.print("\n[Insira o URL do video]\n" +
+                    "URL: ");
+                url = input.next();
+                Video video = new Video();
+
+                if(video.setURL(url))
+                {
+                    System.out.println("\n[Video adicionado com sucesso!]\n");
+
+                    post_video.adicionaVideo(video);
+                }
+                else
+                {
+                    System.out.println("\n[ URL inválida. Tente outra URL.]\n");
+                }  
+                break;
+                
+            case 2: //deletar video
+                post_video.removeVideo();                
+                break;
+            
+            case 3:
+                post_video = null;
+                return null;                    
+            }
+        }
+
+        return post_video;
     }
 }

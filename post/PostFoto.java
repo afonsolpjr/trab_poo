@@ -109,7 +109,8 @@ public class PostFoto extends Postavel
 			System.out.println("[*~*~*~Lista de fotos*~*~*~]\n");
 			for(i=0;i<this.qtde_fotos;i++)
 			{
-				System.out.println("\n\t["+(i+1)+"] URL: " +
+				System.out.println("\n\t[" + fotos.get(i).getID() +
+					"] URL: " +
 					fotos.get(i).getUrl());
 			}
 		}
