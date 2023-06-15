@@ -23,7 +23,7 @@ class Comentario
 		}
 	}
 
-public class PostFoto
+public class PostFoto implements Postavel
 {
 	private int qtde_fotos;
 	private ArrayList<Foto> fotos = new ArrayList<Foto>();
