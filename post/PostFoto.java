@@ -69,28 +69,24 @@ public class PostFoto extends Postavel
 		return null;
 	}
 
-	// public boolean posta() throws ToofewException,ToomanyException
-	// {
-	// 	if(this.fotos.size()==0)
-	// 	{
-	// 		throw new TooFewException();
-	// 	}
-	// 	else if(this.fotos.size() >10)
-	// 	{
-	// 		throw new TooManyException();
-	// 	}
-	// 	else 
-	// 	{
-	// 		this.data_postagem = LocalDateTime.now();
-	// 		System.out.println("Foto Postada com sucesso");
-	// 		return true;
-	// 	}
-	// }
-	
-	public boolean posta()
+	public boolean posta() throws TooFewException,TooManyException
 	{
-		return true;
+		if(this.fotos.size()==0)
+		{
+			throw new TooFewException();
+		}
+		else if(this.fotos.size() >10)
+		{
+			throw new TooManyException();
+		}
+	 	else 
+	 	{
+			this.data_postagem = LocalDateTime.now();
+	 		System.out.println("Foto Postada com sucesso");
+	 		return true;
+		}
 	}
+	
 	
 	public boolean comenta()
 	{
