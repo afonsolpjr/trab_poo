@@ -57,6 +57,7 @@ public static void main(String[] args)
                 testpost_video();
                 break;
         case 3:
+                testpost_semvideo();
                 break;
         case 4:
 		testpost_semfoto();
@@ -99,12 +100,32 @@ public static void main(String[] args)
 
     private static void testpost_video()
     {
-        PostavelFactory.getPostavel("POSTVIDEO");
+        Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
+        try 
+        {
+                post.posta();
+        }
+        catch(TooFewException e)
+        {
+                System.out.println("Erro: "+e);
+        }
+        catch(TooManyException e)
+        {
+                System.out.println("Erro: "+e);
+        }
     }
 
     private static void testpost_semvideo()
     {
-
+        PostVideo post = new PostVideo();
+        try 
+        {
+                post.posta();
+        }
+        catch(TooFewException e)
+        {
+                System.out.println("Erro: "+e);
+        }
     }
 
     private static void testpost_semfoto()
