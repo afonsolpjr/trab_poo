@@ -153,12 +153,13 @@ public class PostavelFactory {
                 "\t[1] Incluir video\n" + 
                 "\t[2] Deletar video\n" + 
                 "\t[3] Cancelar criação de post\n" +
+                "\t[4] Concluir criação de post\n" +
                 "\n\t Selecione : ");
 
             try //valida entrada
             {
                 opcao = input.nextInt();
-                if(opcao < 0 || opcao >3 )
+                if(opcao < 0 || opcao >4 )
                     throw new InputMismatchException();
             }       
             catch(InputMismatchException e)
@@ -199,6 +200,8 @@ public class PostavelFactory {
             case 3:
                 post_video = null;
                 return null;                    
+            case 4:
+            return post_video;
             }
 
         }
