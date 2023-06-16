@@ -27,9 +27,18 @@ public class PostVideo extends Postavel
 	}
 	
 	@Override
-	public boolean posta() //Quando vermos estado de excessão implementarei
+	public boolean posta() throws TooFewException
 	{
-		return true;
+		if (video==null)
+		{
+			throw new TooFewException();
+		}
+		else
+		{
+			this.data_postagem = LocalDateTime.now();
+			System.out.println("Video postado com sucesso");
+			return true;
+		}
 	}
 	
 	@Override
