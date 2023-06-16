@@ -54,7 +54,7 @@ retornem se a operação foi realizada com sucesso ou não.
 - [x] Criar arquivo e definições de atributos/metodos
 - [] Getters e setters pertinentes
 - [x] Implementar adicionaVideo
-- [] Implementar posta
+- [x] Implementar posta
 - [x] Implementar comenta
 
 A classe PostVideo representa uma postagem com um único video. Ela tem os
