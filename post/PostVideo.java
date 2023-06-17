@@ -45,6 +45,7 @@ public class PostVideo extends Postavel
 	public boolean comenta() //Não sei se a prof vai querer que o comentario seja feito totalmente na função, ou se eu recebo ele como argumento
 	{
 		Scanner sc = new Scanner(System.in);
+		System.out.printf("Comentário: ");
 		Comentario comentario = new Comentario(sc.next());
 		this.lista_comentarios.add(comentario);
 		return true;
@@ -66,5 +67,37 @@ public class PostVideo extends Postavel
 	public Video getVideo()
 	{
 		return this.video;
+	}
+	
+	public LocalDateTime getdata_postagem()
+	{
+		return this.data_postagem;
+	}
+	
+	public void printaComentario()
+	{
+		if(this.lista_comentarios.size()==0)
+		{
+			System.out.println("\n\t [*~*~ Não há comentários nesta postagem. *~*~]\n");
+		}
+		else
+		{
+			int i;
+			System.out.println("[*~*~*Lista de comentários*~*~*~]");
+			for (i=0;i<this.lista_comentarios.size();i++)
+			{
+				System.out.println("\n\t Comentário:\n" + lista_comentarios.get(i).gettexto());
+			}
+		}
+	}
+	@Override
+	public void infos()
+	{
+		System.out.println("\n\t[*~*~Informações do objeto da classe PostVideo *~*~]\n");
+		this.printaVideo();
+		System.out.printf("\tdata_postagem :");
+		System.out.println(this.getdata_postagem());
+		this.printaComentario();
+		System.out.println("\n\t [*~*~Fim das informações*~*~]\n");
 	}
 }
