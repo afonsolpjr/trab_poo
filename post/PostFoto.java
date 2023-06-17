@@ -123,10 +123,11 @@ public class PostFoto extends Postavel
 		}
 	}
 	
-	
+	@Override
 	public boolean comenta()
 	{
 		Scanner sc = new Scanner(System.in);
+		System.out.printf("Comentário: ");
 		Comentario comentario = new Comentario(sc.next());
 		this.listaComentarios.add(comentario);
 		System.out.println("Comentario feito com sucesso");
@@ -178,7 +179,7 @@ public class PostFoto extends Postavel
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual local gostaria de adicionar à foto?");
-		String Local = sc.nextLine();
+		String local = sc.nextLine();
 		this.localizacao = local;
 		return true;
 	}
@@ -210,4 +211,3 @@ public class PostFoto extends Postavel
 		System.out.println("\n\t [*~*~Fim das informações*~*~]\n");
 	}
 }
-
