@@ -129,7 +129,7 @@ que os outros ou não;
 #  PostavelFactory
 ## A fazer:
 - [afonso~fazendo] Implementar metodo getPostavel
-
+- [] Adicionar a opção de por localização quando for criar PostFoto
 
 A classe PostavelFactory tem o método getPostavel que recebe uma String e
 retorna um objeto Postavel dependendo do argumento. Caso o argumento seja
@@ -206,3 +206,4 @@ PostFoto com construtor para inicializar qtdfotos = 0
 PostavelFactory tem dois metodos separados para criar PostFoto e PostVideo
 O metodo abstrato posta da classe postavel agora dá throw em 2 Erros "TooManyException" e "ToofewException"
 Mais duas classes em post "TooManyException" e "ToofewException" para ter excessão personalizada
+O método abstrato Infos foi criado pra ser implementado e ser utilizado pelos Postaveis PostFoto e PostVideo.
