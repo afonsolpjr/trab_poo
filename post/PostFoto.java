@@ -5,7 +5,7 @@ import trab_poo.recurso.Foto;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 
-class Comentario
+class Comentario // Precisa ser default para evitar problemas de compilação (Herança)
 	{
 		private LocalDate data = LocalDate.now();
 		private boolean fixado;
@@ -20,6 +20,40 @@ class Comentario
 		protected int gettamanho()
 		{
 			return this.tamanho;
+		}
+		protected String gettexto()
+		{
+			return this.texto;
+		}
+		protected LocalDate getdata()
+		{
+			return this.data;
+		}
+		protected boolean fixaComentario()
+		{
+			if(!this.fixado) 
+			{
+				this.fixado = true;
+				return true;
+			}
+			else
+			{
+				System.out.println("O comentário já está fixado");
+				return false;
+			}
+		}
+		protected boolean retiraFixado()
+		{
+			if(this.fixado)
+			{
+				this.fixado=false;
+				return true;
+			}
+			else 
+			{
+				System.out.println("O comentário não está fixado");
+				return false;
+			}
 		}
 	}
 
@@ -53,10 +87,11 @@ public class PostFoto extends Postavel
 				return true;
 			}
 		}
+		System.out.println("A foto cuja qual exclusão é desejada não está no Post");
 		return false;
 	}
 
-	public Foto getFoto(int id) //retorna foto pelo id informado dela. Será que isso nao deveria estar em recurso?
+	public Foto getFoto(int id) //retorna foto pelo id informado dela. Será que isso nao deveria estar em recurso? Acho que aqui mesmo por se tratar de querer uma foto especifica do post
 	{
 		int i;
 		for(i=0;i<fotos.size();i++)
@@ -66,6 +101,7 @@ public class PostFoto extends Postavel
 				return fotos.get(i);
 			}
 		}
+		System.out.println("Foto não está contida no Post");
 		return null;
 	}
 
@@ -93,6 +129,7 @@ public class PostFoto extends Postavel
 		Scanner sc = new Scanner(System.in);
 		Comentario comentario = new Comentario(sc.next());
 		this.listaComentarios.add(comentario);
+		System.out.println("Comentario feito com sucesso");
 		return true;
 	}
 	
@@ -121,5 +158,56 @@ public class PostFoto extends Postavel
 		return this.qtde_fotos;
 	}
 
+	public void printaComentario()
+	{
+		if(this.listaComentarios.size()==0)
+		{
+			System.out.println("\n\t [*~*~ Não há comentários nesta postagem. *~*~]\n");
+		}
+		else
+		{
+			int i;
+			System.out.println("[*~*~*Lista de comentários*~*~*~]");
+			for (i=0;i<this.listaComentarios.size();i++)
+			{
+				System.out.println("\n\t Comentário:\n" + listaComentarios.get(i).gettexto());
+			}
+		}
+	}
+	public boolean setlocalizacao()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Qual local gostaria de adicionar à foto?");
+		String Local = sc.nextLine();
+		this.localizacao = local;
+		return true;
+	}
+	public String getlocalizacao()
+	{
+		if(localizacao==null)
+		{
+			System.out.println("Localização não espeficicada");
+			return null;
+		}
+		else
+		{
+			return this.localizacao;
+		}
+	}
+	public LocalDateTime getdata_postagem()
+	{
+		return this.data_postagem;
+	}
+	public void infos() //Método pra printar todas as informações do objeto criado como pedido na especificação do trabalho \\ sera que o nome é toString?
+	{
+		System.out.println("\n\t[*~*~Informações do objeto da classe PostFoto *~*~]\n");
+		System.out.println("Quantidade de fotos: "+this.getQtdFotos());
+		this.printaFotos();
+		System.out.println("Localizacao: "+this.getlocalizacao());
+		System.out.printf("data_postagem :");
+		System.out.println(this.getdata_postagem());
+		this.printaComentario();
+		System.out.println("\n\t [*~*~Fim das informações*~*~]\n");
+	}
 }
 
