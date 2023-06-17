@@ -52,6 +52,7 @@ public static void main(String[] args)
         {
 
         case 1:
+                testpost_texto();
                 break;
         case 2:
                 testpost_video();
@@ -69,12 +70,16 @@ public static void main(String[] args)
                 testpost_11fotos();
                 break;
         case 7:
+                testcoment_foto();
                 break;
         case 8:  
+                testcoment_video();
                 break;
         case 9:
+                testinvalid_video();
                 break;
         case 10:
+                testinvalid_foto();
                 break;
         }
     }
@@ -113,6 +118,10 @@ public static void main(String[] args)
         {
                 System.out.println("Erro: "+e);
         }
+        finally
+        {
+                post.infos();
+        }
     }
 
     private static void testpost_semvideo()
@@ -125,6 +134,10 @@ public static void main(String[] args)
         catch(TooFewException e)
         {
                 System.out.println("Erro: "+e);
+        }
+        finally
+        {
+                post.infos();
         }
     }
 
@@ -194,12 +207,13 @@ public static void main(String[] args)
     private static void testcoment_foto()
     {
         Postavel post = PostavelFactory.getPostavel("POSTFOTO");
-        
+        System.out.println("Teste comentário: "+post.comenta());
     }
 
     private static void testcoment_video()
     {
-
+        Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
+        System.out.println("Teste comentário: "+post.comenta());
     }
 
     private static void testinvalid_video()
