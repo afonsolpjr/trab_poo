@@ -143,6 +143,10 @@ public static void main(String[] args)
 	{
 		System.out.println("Erro:"+e);
 	}
+        finally
+        {
+                post.infos();
+        }
     }
 
     private static void testpost_5fotos()
@@ -160,6 +164,10 @@ public static void main(String[] args)
 	{
 		System.out.println("Erro:"+e);
 	}
+        finally
+        {
+                post.infos();
+        }
     }
 
     private static void testpost_11fotos()
@@ -177,11 +185,16 @@ public static void main(String[] args)
 	{
 		System.out.println("Erro:"+e);
 	}
+        finally
+        {
+                post.infos();
+        }
     }
 
     private static void testcoment_foto()
     {
-
+        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
+        
     }
 
     private static void testcoment_video()
