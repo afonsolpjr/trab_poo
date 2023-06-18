@@ -37,6 +37,7 @@ public static void main(String[] args)
         try //validando entrada do usuario
         {
                 opcao = input.nextInt();
+                input.nextLine();
                 if(opcao<0 || opcao>10)
                 {
                         throw new InputMismatchException();
@@ -44,7 +45,6 @@ public static void main(String[] args)
         }
         catch(InputMismatchException e)
         {
-                input.next();
                 System.out.println("\n\t[Insira um valor válido!]");
         }
         

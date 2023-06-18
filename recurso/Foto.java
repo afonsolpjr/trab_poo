@@ -11,6 +11,7 @@ public class Foto extends Recurso{
     {
         super(url);
     }
+    
     public String getResolucao()
     {
         return this.resolucao;

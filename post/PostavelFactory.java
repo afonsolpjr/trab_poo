@@ -90,7 +90,7 @@ public class PostavelFactory {
                 }
                 catch(Exception e)
                 {
-                    System.out.println(e);
+                    System.out.println(e.getMessage());
                 }  
                 break;
                 
@@ -160,12 +160,12 @@ public class PostavelFactory {
             try //valida entrada
             {
                 opcao = input.nextInt();
+                input.nextLine();
                 if(opcao < 0 || opcao >4 )
                     throw new InputMismatchException();
             }       
             catch(InputMismatchException e)
             {
-                input.next();
                 System.out.println("\n\t[Insira um valor válido!]");
             } 
             
@@ -179,19 +179,18 @@ public class PostavelFactory {
                 }
                 System.out.print("\n[Insira o URL do video]\n" + "URL: ");
 
-                url = input.next();
-                Video video = new Video();
+                url = input.nextLine();
 
-                if(video.setURL(url))
+                try
                 {
-                    System.out.println("\n[Video adicionado com sucesso!]\n");
-
+                    Video video = new Video(url);
                     post_video.adicionaVideo(video);
                 }
-                else
+                catch(Exception e)
                 {
-                    System.out.println("\n[ URL inválida. Tente outra URL.]\n");
-                }  
+                    System.out.println(e.getMessage());
+                }
+                  
                 break;
                 
             case 2: //deletar video

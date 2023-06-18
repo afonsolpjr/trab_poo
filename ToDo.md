@@ -14,7 +14,7 @@ Só é possível criar um Recurso com uma url válida.
 
 # Video
 ## A fazer:
-- [] Implementar validaUrlRecurso
+- [x] Implementar validaUrlRecurso
 
 
 Classe que herda de Recurso e adiciona os seguintes atributos:
@@ -29,7 +29,7 @@ Caso contrário, não é válida.
 
 # Foto
 ## A fazer:
-- [] Implementar validaUrlRecurso, função a ser chamada no construtor 
+- [x] Implementar validaUrlRecurso, função a ser chamada no construtor 
 
 
 
@@ -208,4 +208,4 @@ O metodo abstrato posta da classe postavel agora dá throw em 2 Erros "TooManyEx
 Mais duas classes em post "TooManyException" e "ToofewException" para ter excessão personalizada
 O método abstrato Infos foi criado pra ser implementado e ser utilizado pelos Postaveis PostFoto e PostVideo.
 
-O construtor de Recursos, caso a URL do recurso seja inválida, dá uma exceção.
+O construtor de Recursos, caso a URL do recurso seja inválida, dá uma exceção. Assim como o construtor de suas classes filhas, que precisam chamar o construtor da classe mãe logo no começo.
