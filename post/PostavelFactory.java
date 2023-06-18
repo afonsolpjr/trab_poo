@@ -55,15 +55,15 @@ public class PostavelFactory {
             try /* Valida entrada do usuário */
             {
                 opcao = input.nextInt();
+                input.nextLine();
                 if(opcao<1 || opcao>4) //Adicionei o 4 à validação
                 {
-                    input.next();
                     throw new InputMismatchException();
                 }
-                input.nextLine();  //tira o \n do buffer
             }
             catch(InputMismatchException e)
             {
+                
                 System.out.println("\n\t[Insira um valor válido!]");
             }
 
@@ -200,7 +200,7 @@ public class PostavelFactory {
             case 3:
                 post_video = null;
                 return null;
-                                    
+
             case 4:
                 return post_video;
             }

@@ -65,7 +65,9 @@ public static void main(String[] args)
 		testpost_semfoto();
                 break;
         case 5:
-                testpost_5fotos();
+                post = testpost_5fotos();
+                if(post!=null)
+                        posts.add(post);
                 break;
         case 6:
                 testpost_11fotos();
@@ -167,7 +169,7 @@ public static void main(String[] args)
         }
     }
 
-    private static void testpost_5fotos()
+    private static Postavel testpost_5fotos()
     {
         Scanner input = new Scanner(System.in);
         int opt=-1;
@@ -193,9 +195,16 @@ public static void main(String[] args)
         PostFoto post2 = null;
         if(opt==1)
         {
+                do
+                {
+                System.out.println("\t\tFaça uma postagem de 5 fotos!");
                 post1 = PostavelFactory.getPostavel("POSTFOTO");
+                if(post1==null)
+                        return null;
+                }
+                while(((PostFoto)post1).getQtdFotos() != 5);
         }
-        if(opt==2)
+        else if(opt==2)
         {
                 post2 = new PostFoto();
                 ArrayList<Foto> fotos = new ArrayList<Foto>();
@@ -239,12 +248,64 @@ public static void main(String[] args)
                 else
                         post1.infos();
         }
+        if(post1==null)
+                return post2;
+        else
+                return post1;
     }
 
     private static void testpost_11fotos()
     {
-        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
-	try
+        Scanner input = new Scanner(System.in);
+        int opt=-1;
+        System.out.println("\nDigite [1] para inserir os URL das 11 fotos manualmente, " +
+                "ou [2] utilizar endereços padrões.");
+        try
+        {
+                opt = input.nextInt();
+                input.nextLine();
+                if(opt!= 0 && opt != 1 && opt !=2)
+                        throw new InputMismatchException();
+                
+        }
+        catch(InputMismatchException e)
+        {
+                System.out.println("[Insira um número válido]");
+        }
+        Postavel post = null;
+        if(opt==1)
+        {
+                do
+                {
+                System.out.println("\t\tFaça uma postagem de 11 fotos!");
+                post = PostavelFactory.getPostavel("POSTFOTO");
+                if(post==null)
+                        return;
+                }
+                while(((PostFoto)post).getQtdFotos() != 11);
+        }
+        else if(opt==2)
+        {
+                post = new PostFoto();
+                ArrayList<Foto> fotos = new ArrayList<Foto>();
+                try
+                {
+                        for(int i=0;i<11;i++)
+                                fotos.add(new Foto(i+"teste.jpg"));
+                }
+                catch(Exception e)
+                {
+                        System.out.println(e.getMessage());
+                }
+                int i;
+                for(i=0;i<fotos.size();i++)
+                {
+                        ((PostFoto)post).adicionaFotos(fotos.get(i));
+                }
+        }
+	if(post==null)
+                return;
+        try
 	{
 	        post.posta();
 	}
