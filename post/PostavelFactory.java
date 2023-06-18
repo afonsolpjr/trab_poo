@@ -199,9 +199,10 @@ public class PostavelFactory {
             
             case 3:
                 post_video = null;
-                return null;                    
+                return null;
+                                    
             case 4:
-            return post_video;
+                return post_video;
             }
 
         }

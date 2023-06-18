@@ -1,6 +1,6 @@
 
 
-
+[] - ajustar retornos das funcoes testes na main, para que retornem postaveis a serem adicionados no array de posts quando pertinente.
 # Recurso 
 
 Classe abstrata que tem os seguintes atributos:

@@ -11,9 +11,8 @@ public class Main {
 public static void main(String[] args)
 {
     int opcao;
+    ArrayList<Postavel> posts = new ArrayList<Postavel>();
     Postavel post;
-    ArrayList<PostFoto> post_fotos = new ArrayList<PostFoto>();
-    ArrayList<PostVideo> post_videos = new ArrayList<PostVideo>();
     Scanner input = new Scanner(System.in);
 
     opcao = -1;
@@ -55,7 +54,9 @@ public static void main(String[] args)
                 testpost_texto();
                 break;
         case 2:
-                testpost_video();
+                post = testpost_video();
+                if(post!=null)
+                        posts.add(post);
                 break;
         case 3:
                 testpost_semvideo();
@@ -83,12 +84,12 @@ public static void main(String[] args)
                 break;
         }
     }
-
+    input.close();
 }
 
 // A classe de execução do trabalho (Main) deverá ter pelo menos os seguintes testes:
 // ● Tentativa de postagem com texto
-// ● Tentativa de postagem com um vídeo atribuído
+// ● Tentativa de postagem com um vídeo atribuído       FEITO
 // ● Tentativa de postagem sem vídeo
 // ● Tentativa de postagem sem foto
 // ● Tentativa de postagem com 5 fotos atribuídas
@@ -103,9 +104,12 @@ public static void main(String[] args)
 
     }
 
-    private static void testpost_video()
+    private static Postavel testpost_video()
     {
         Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
+        if(post==null)
+                return null;
+        
         try 
         {
                 post.posta();
@@ -122,6 +126,7 @@ public static void main(String[] args)
         {
                 post.infos();
         }
+        return post;
     }
 
     private static void testpost_semvideo()
@@ -164,10 +169,60 @@ public static void main(String[] args)
 
     private static void testpost_5fotos()
     {
-        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
+        Scanner input = new Scanner(System.in);
+        int opt=-1;
+        System.out.println("\nDigite [1] para inserir os URL das 5 fotos manualmente, " +
+                "ou [2] utilizar os seguintes endereços:\n \"Foto1.jpg\""+
+                "\n\"Foto2.bmp\""+
+                "\n\"Foto3.png\"" +
+                "\n\"Foto4.jpg\"" +
+                "\n\"Foto5.png\"\n");
+        try
+        {
+                opt = input.nextInt();
+                input.nextLine();
+                if(opt!= 0 && opt != 1 && opt !=2)
+                        throw new InputMismatchException();
+                
+        }
+        catch(InputMismatchException e)
+        {
+                System.out.println("[Insira um número válido]");
+        }
+        Postavel post1 = null;
+        PostFoto post2 = null;
+        if(opt==1)
+        {
+                post1 = PostavelFactory.getPostavel("POSTFOTO");
+        }
+        if(opt==2)
+        {
+                post2 = new PostFoto();
+                ArrayList<Foto> fotos = new ArrayList<Foto>();
+                try
+                {
+                fotos.add(new Foto("Foto1.jpg"));
+                fotos.add(new Foto("Foto2.bmp"));
+                fotos.add(new Foto("Foto3.png"));
+                fotos.add(new Foto("Foto4.jpg"));
+                fotos.add(new Foto("Foto5.png"));
+                }
+                catch(Exception e)
+                {
+                        System.out.println(e.getMessage());
+                }
+                int i;
+                for(i=0;i<fotos.size();i++)
+                {
+                        post2.adicionaFotos(fotos.get(i));
+                }
+        }
 	try
 	{
-	        post.posta();
+	        if(post1==null)
+                        post2.posta();
+                else
+                        post1.posta();
 	}
 	catch (TooFewException e)
 	{
@@ -179,7 +234,10 @@ public static void main(String[] args)
 	}
         finally
         {
-                post.infos();
+                if(post1==null)
+                        post2.infos();
+                else
+                        post1.infos();
         }
     }
 
@@ -226,4 +284,5 @@ public static void main(String[] args)
 
     }
 
+    
 }
