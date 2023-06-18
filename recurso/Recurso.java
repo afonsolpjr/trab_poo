@@ -8,8 +8,12 @@ public abstract class Recurso{
 
     public abstract boolean validaUrlRecurso(String url);
 
-    public Recurso()
+    public Recurso(String url) throws Exception
     {
+        if(!(this.setURL(url)))
+        {
+            throw new Exception("\n[URL inserida inválida.]");
+        }
         this.ID = Recurso.getProxID();
         Recurso.prox_ID++;
     }

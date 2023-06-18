@@ -60,6 +60,7 @@ public class PostavelFactory {
                     input.next();
                     throw new InputMismatchException();
                 }
+                input.nextLine();  //tira o \n do buffer
             }
             catch(InputMismatchException e)
             {
@@ -74,23 +75,22 @@ public class PostavelFactory {
 
                 try // valida entrada
                 {
-                    url = input.next();
+                    url = input.nextLine();
                 }
                 catch(InputMismatchException e)
                 {
                     System.out.println("\n\t[Insira um valor válido!]");
                 }
-                Foto foto = new Foto();
 
-                if(foto.setURL(url))
+                try
                 {
+                    Foto foto = new Foto(url);
                     System.out.println("\n\t[Foto adicionada com sucesso!]\n");
-
                     post_foto.adicionaFotos(foto);
                 }
-                else
+                catch(Exception e)
                 {
-                    System.out.println("\n[ URL inválida. Tente outra URL.]\n");
+                    System.out.println(e);
                 }  
                 break;
                 
@@ -100,6 +100,7 @@ public class PostavelFactory {
                     post_foto.printaFotos();
                     break;
                 }
+
                 post_foto.printaFotos();
                 System.out.println("\nSelecione o id da foto a ser deletada");
                 try
@@ -111,7 +112,7 @@ public class PostavelFactory {
                     input.next();
                     System.out.println("\n\t[Insira um valor válido!]");
                 }
-                foto = post_foto.getFoto(opcao2);
+                Foto foto = post_foto.getFoto(opcao2);
                 if(post_foto.removeFoto(foto))
                 {
                     System.out.println("\n\t[Foto deletada com sucesso.]");

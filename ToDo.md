@@ -207,3 +207,5 @@ PostavelFactory tem dois metodos separados para criar PostFoto e PostVideo
 O metodo abstrato posta da classe postavel agora dá throw em 2 Erros "TooManyException" e "ToofewException"
 Mais duas classes em post "TooManyException" e "ToofewException" para ter excessão personalizada
 O método abstrato Infos foi criado pra ser implementado e ser utilizado pelos Postaveis PostFoto e PostVideo.
+
+O construtor de Recursos, caso a URL do recurso seja inválida, dá uma exceção.
