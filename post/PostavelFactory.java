@@ -34,23 +34,23 @@ public class PostavelFactory {
 
     private static PostFoto getPostFoto()
     {
-        int opcao=-1;
+        int opcao=0;
         int opcao2=0;
         String url = null;
         Scanner input = new Scanner(System.in);
 
         PostFoto post_foto = new PostFoto();
 
-        while(opcao!=3)
+        while(true)
         {
-            System.out.println("\n[*~*~Postagem com foto*~*~]\n");
+            System.out.println("\n\t[*~*~Postagem com foto*~*~]\n");
             post_foto.printaFotos();
-            System.out.println("\n[Opções]:\n" + 
+            System.out.print("\n\t[Opções]:\n" + 
                 "\t[1] Incluir foto\n" + 
                 "\t[2] Deletar foto\n" + 
                 "\t[3] Cancelar criação de post\n" +
                 "\t[4] Concluir criação de post\n" +
-                "\nSelecione : ");
+                "\n\tSelecione : ");
             
             try /* Valida entrada do usuário */
             {
@@ -63,15 +63,15 @@ public class PostavelFactory {
             }
             catch(InputMismatchException e)
             {
-                
+                input.nextLine();
                 System.out.println("\n\t[Insira um valor válido!]");
             }
 
             switch(opcao)
             {
             case 1: //inclusao de foto
-                System.out.print("\n[Insira o URL da foto]\n" +
-                    "URL: ");
+                System.out.print("\n\t[Insira o URL da foto]\n" +
+                    "\tURL: ");
 
                 try // valida entrada
                 {
@@ -126,14 +126,14 @@ public class PostavelFactory {
             
             case 3:
                 post_foto = null;
-                return null;                    
+                input.close();
+                return null;                   
             
             case 4: // Adicionei case 4
+                input.close();
                 return post_foto;
             }
         }
-        input.close();
-        return post_foto;
     }
 
     private static PostVideo getPostVideo()
@@ -147,10 +147,10 @@ public class PostavelFactory {
 
         while(opcao!=3)
         {
-            System.out.println("\n[*~*~Postagem com video*~*~]\n");   
+            System.out.println("\n\t[*~*~Postagem com video*~*~]\n");   
             post_video.printaVideo();
 
-            System.out.println("\n[Opções]:\n" + 
+            System.out.print("\n\t[Opções]:\n" + 
                 "\t[1] Incluir video\n" + 
                 "\t[2] Deletar video\n" + 
                 "\t[3] Cancelar criação de post\n" +
@@ -166,6 +166,7 @@ public class PostavelFactory {
             }       
             catch(InputMismatchException e)
             {
+                input.nextLine();
                 System.out.println("\n\t[Insira um valor válido!]");
             } 
             
@@ -174,10 +175,10 @@ public class PostavelFactory {
             case 1: //anexar video
                 if(post_video.getVideo()!=null)
                 {
-                    System.out.println("\n[Já existe um vídeo incluido.]");
+                    System.out.println("\n\t[Já existe um vídeo incluido.]");
                     break;
                 }
-                System.out.print("\n[Insira o URL do video]\n" + "URL: ");
+                System.out.print("\n\t[Insira o URL do video]\n" + "\tURL: ");
 
                 url = input.nextLine();
 

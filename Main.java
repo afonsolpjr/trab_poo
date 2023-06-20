@@ -20,18 +20,18 @@ public static void main(String[] args)
     {
         System.out.println(
             "Selecione o teste que deseja realizar:\n" +
-            "\n\t[1] Tentativa de postagem com texto" + 
-            "\n\t[2] Tentativa de postagem com um vídeo atribuído" +
-            "\n\t[3] Tentativa de postagem sem vídeo" +
-            "\n\t[4] Tentativa de postagem sem foto" + 
-            "\n\t[5] Tentativa de postagem com 5 fotos atribuídas" + 
-            "\n\t[6] Tentativa de postagem com 11 fotos atribuídas" +
-            "\n\t[7] Tentativa de criação de comentário em uma postagem com foto" +
-            "\n\t[8] Tentativa de criação de comentário em uma postagem com vídeo" +
-            "\n\t[9] Tentativa de criação de vídeo inválido" +
-            "\n\t[10] Tentativa de criação de foto inválida" +
-            "\n\tou [0] para sair." +
-            "\nInsira o numero da opção: ");
+            "\n[1] Tentativa de postagem com texto" + 
+            "\n[2] Tentativa de postagem com um vídeo atribuído" +
+            "\n[3] Tentativa de postagem sem vídeo" +
+            "\n[4] Tentativa de postagem sem foto" + 
+            "\n[5] Tentativa de postagem com 5 fotos atribuídas" + 
+            "\n[6] Tentativa de postagem com 11 fotos atribuídas" +
+            "\n[7] Tentativa de criação de comentário em uma postagem com foto" +
+            "\n[8] Tentativa de criação de comentário em uma postagem com vídeo" +
+            "\n[9] Tentativa de criação de vídeo inválido" +
+            "\n[10] Tentativa de criação de foto inválida" +
+            "\n[0] para sair." +
+            "\n\nInsira o numero da opção: ");
         
         try //validando entrada do usuario
         {
@@ -44,6 +44,7 @@ public static void main(String[] args)
         }
         catch(InputMismatchException e)
         {
+                input.nextLine();
                 System.out.println("\n\t[Insira um valor válido!]");
         }
         

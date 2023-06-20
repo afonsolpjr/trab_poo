@@ -144,10 +144,10 @@ public class PostFoto extends Postavel
 		else
 		{
 			int i;
-			System.out.println("[*~*~*~Lista de fotos*~*~*~]");
+			System.out.println("\t\t[*~*~*~Lista de fotos*~*~*~]");
 			for(i=0;i<this.qtde_fotos;i++)
 			{
-				System.out.println("\n\t[Id:" + fotos.get(i).getID() +
+				System.out.print("\n\t\t\t[Id:" + fotos.get(i).getID() +
 					"] URL: " +
 					fotos.get(i).getUrl());
 			}
@@ -202,10 +202,10 @@ public class PostFoto extends Postavel
 	public void infos() //Método pra printar todas as informações do objeto criado como pedido na especificação do trabalho \\ sera que o nome é toString?
 	{
 		System.out.println("\n\t[*~*~Informações do objeto da classe PostFoto *~*~]\n");
-		System.out.println("Quantidade de fotos: "+this.getQtdFotos());
+		System.out.println("\tQuantidade de fotos: "+this.getQtdFotos());
 		this.printaFotos();
-		System.out.println("Localizacao: "+this.getlocalizacao());
-		System.out.printf("data_postagem :");
+		System.out.println("\tLocalizacao: "+this.getlocalizacao());
+		System.out.printf("\tdata_postagem :");
 		System.out.println(this.getdata_postagem());
 		this.printaComentario();
 		System.out.println("\n\t [*~*~Fim das informações*~*~]\n");
