@@ -8,7 +8,7 @@ public class Video extends Recurso{
     private int frame_rate;
     private int duracao;
 
-    public Video(String url) throws Exception
+    public Video(String url) throws IllegalArgumentException
     {
         super(url);
     }

@@ -7,7 +7,7 @@ public class Foto extends Recurso{
     
     private String resolucao;
 
-    public Foto(String url) throws Exception
+    public Foto(String url) throws IllegalArgumentException
     {
         super(url);
     }

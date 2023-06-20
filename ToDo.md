@@ -2,6 +2,8 @@
 
 [] - ajustar retornos das funcoes testes na main, para que retornem postaveis a serem adicionados no array de posts quando pertinente.
 [] - os testes de postagens acabam mostrando as informaçoes dos posts mesmo que eles não tenham sido postados. é pra ser assim mesmo?
+
+
 # Recurso 
 
 Classe abstrata que tem os seguintes atributos:
@@ -209,4 +211,4 @@ O metodo abstrato posta da classe postavel agora dá throw em 2 Erros "TooManyEx
 Mais duas classes em post "TooManyException" e "ToofewException" para ter excessão personalizada
 O método abstrato Infos foi criado pra ser implementado e ser utilizado pelos Postaveis PostFoto e PostVideo.
 
-O construtor de Recursos, caso a URL do recurso seja inválida, dá uma exceção. Assim como o construtor de suas classes filhas, que precisam chamar o construtor da classe mãe logo no começo.
+O construtor de Recursos, caso a URL do recurso seja inválida, dá uma exceção (IllegalArgumentException). Assim como o construtor de suas classes filhas, que precisam chamar o construtor da classe mãe logo no começo.

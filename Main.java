@@ -294,7 +294,7 @@ public static void main(String[] args)
                         for(int i=0;i<11;i++)
                                 fotos.add(new Foto(i+"teste.jpg"));
                 }
-                catch(Exception e)
+                catch(IllegalArgumentException e)
                 {
                         System.out.println(e.getMessage());
                 }

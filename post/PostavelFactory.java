@@ -51,7 +51,7 @@ public class PostavelFactory {
                 "\t[3] Cancelar criação de post\n" +
                 "\t[4] Concluir criação de post\n" +
                 "\n\tSelecione : ");
-            
+            opcao =0;
             try /* Valida entrada do usuário */
             {
                 opcao = input.nextInt();
@@ -138,14 +138,14 @@ public class PostavelFactory {
 
     private static PostVideo getPostVideo()
     {
-        int opcao=-1;
+        int opcao=0;
         String url;
         Scanner input = new Scanner(System.in);
 
 
         PostVideo post_video = new PostVideo();
 
-        while(opcao!=3)
+        while(true)
         {
             System.out.println("\n\t[*~*~Postagem com video*~*~]\n");   
             post_video.printaVideo();
@@ -156,7 +156,7 @@ public class PostavelFactory {
                 "\t[3] Cancelar criação de post\n" +
                 "\t[4] Concluir criação de post\n" +
                 "\n\t Selecione : ");
-
+            opcao = 0;
             try //valida entrada
             {
                 opcao = input.nextInt();
@@ -186,8 +186,9 @@ public class PostavelFactory {
                 {
                     Video video = new Video(url);
                     post_video.adicionaVideo(video);
+                    System.out.println("\n\t[Vídeo adicionado com sucesso.]");
                 }
-                catch(Exception e)
+                catch(IllegalArgumentException e)
                 {
                     System.out.println(e.getMessage());
                 }
@@ -200,14 +201,15 @@ public class PostavelFactory {
             
             case 3:
                 post_video = null;
+                input.close();
                 return null;
 
             case 4:
+                input.close();
                 return post_video;
             }
 
         }
 
-        return post_video;
     }
 }
