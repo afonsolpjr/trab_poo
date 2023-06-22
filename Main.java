@@ -104,7 +104,11 @@ public static void main(String[] args)
 
     private static void testpost_texto()
     {
-
+        Postavel post = PostavelFactory.getPostavel("POSTTEXTO");
+        if(post == null)
+        {
+                System.out.println("Não foi possivel criar posttexto");
+        }
     }
 
     private static Postavel testpost_video()
