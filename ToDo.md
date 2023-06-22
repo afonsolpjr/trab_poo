@@ -154,8 +154,8 @@ todos os testes kkkkkkk
 - [x] Tentativa de postagem com 11 fotos atribuídas
 - [] Tentativa de criação de comentário em uma postagem com foto
 - [] Tentativa de criação de comentário em uma postagem com vídeo
-- [] Tentativa de criação de vídeo inválido
-- [] Tentativa de criação de foto inválida
+- [x] Tentativa de criação de vídeo inválido
+- [x] Tentativa de criação de foto inválida
 
 
 A classe de execução do trabalho (Main) deverá ter pelo menos os seguintes testes:

@@ -50,7 +50,8 @@ public static void main(String[] args)
         
         switch(opcao)
         {
-
+        case 0:
+                return;
         case 1:
                 testpost_texto();
                 break;
@@ -190,9 +191,11 @@ public static void main(String[] args)
         }
         catch(InputMismatchException e)
         {
+                input.nextLine();
                 System.out.println("[Insira um número válido]");
+                return null;
         }
-        
+
         Postavel post1 = null; // Se escolher inserir manualmente, usa-se este objeto.
         PostFoto post2 = null;  // Se escolher os pré-definidos, este é utilizado.
         if(opt==1)      
@@ -339,7 +342,7 @@ public static void main(String[] args)
 
     private static void testinvalid_video()
     {
-        Postavel post;
+        Postavel post = null;
         int opt;
         Scanner input = new Scanner(System.in);
 
@@ -356,15 +359,97 @@ public static void main(String[] args)
         }
         catch(InputMismatchException e)
         {
+                input.nextLine();
                 System.out.println("[Insira um número válido]");
+                return;
         }        
         
+        if(opt==1)
+        {
+                post = PostavelFactory.getPostavel("POSTVIDEO");
+                if(post==null)
+                        return;
+                try
+                {
+                        ((PostVideo)post).posta();
+                }
+                catch(TooFewException e)
+                {
+                        System.out.println("[Erro: " + e +']');
+                }
+        }
+        else if(opt==2)
+        {
+                try
+                {
+                        Video video_invalido = new Video("Videoinvalido.avi");                
+                }
+                catch(IllegalArgumentException e)
+                {
+                        System.out.println(e.getMessage());
+                }
+        }
+        else if(opt==0)
+                return;
+
 
     }
 
     private static void testinvalid_foto()
     {
+        Postavel post = null;
+        int opt;
+        Scanner input = new Scanner(System.in);
 
+        System.out.println(
+                "\nDigite [1] para inserir uma URL manualmente, " +
+                "ou [2] utilizar um endereço inválido \"FotoInvalida.img\" .");
+        
+        try
+        {
+                opt = input.nextInt();
+                input.nextLine();
+                if(opt!= 0 && opt != 1 && opt !=2)
+                        throw new InputMismatchException();
+        }
+        catch(InputMismatchException e)
+        {
+                input.nextLine();
+                System.out.println("[Insira um número válido]");
+                return;
+        }        
+        
+        if(opt==1)
+        {
+                post = PostavelFactory.getPostavel("POSTFOTO");
+                if(post==null)
+                        return;
+                try
+                {
+                        post.posta();
+                }
+                catch(TooFewException e)
+                {
+                        System.out.println("[Erro: " + e +']');
+                }
+                catch(TooManyException e)
+                {
+                        System.out.println("[Erro: " + e +']');
+                }
+        }
+        else if(opt==2)
+        {
+                try
+                {
+                        Foto foto_invalida = new Foto("FotoInvalida.img");                
+                }
+                catch(IllegalArgumentException e)
+                {
+                        System.out.println(e.getMessage());
+                }
+        }
+        else if(opt==0)
+                return;
     }
 
     
