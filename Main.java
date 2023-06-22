@@ -325,16 +325,32 @@ public static void main(String[] args)
         }
     }
 
-    private static void testcoment_foto()
+    private static boolean testcoment_foto()
     {
+        Scanner sc = new Scanner(System.in);
         Postavel post = PostavelFactory.getPostavel("POSTFOTO");
-        System.out.println("Teste comentário: "+post.comenta());
+        System.out.printf("Comentario: ");
+        String comentario = sc.next();
+        int num_anterior = post.getNum_comentarios();
+
+        System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
+        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) return true;
+        else return false;
     }
 
-    private static void testcoment_video()
+    private static boolean testcoment_video()
     {
+        Scanner sc = new Scanner (System.in);
         Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
-        System.out.println("Teste comentário: "+post.comenta());
+
+        System.out.printf("Comentario: ");
+        String comentario = sc.next();
+
+        int num_anterior = post.getNum_comentarios();
+        
+        System.out.println("Teste comentário: "+post.comenta(comentario));
+        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) return true;
+        else return false;
     }
 
     private static void testinvalid_video()
