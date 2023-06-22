@@ -124,16 +124,17 @@ public class PostFoto extends Postavel
 	}
 	
 	@Override
-	public boolean comenta()
+	public boolean comenta(String texto)
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.printf("Comentário: ");
-		Comentario comentario = new Comentario(sc.next());
+		Comentario comentario = new Comentario(texto);
 		this.listaComentarios.add(comentario);
-		System.out.println("Comentario feito com sucesso");
 		return true;
 	}
 	
+	public String getUltimoComent()
+	{
+		return this.listaComentarios.get(this.listaComentarios.size()-1).gettexto();
+	}
 
 	public void printaFotos()
 	{
@@ -198,6 +199,11 @@ public class PostFoto extends Postavel
 	public LocalDateTime getdata_postagem()
 	{
 		return this.data_postagem;
+	}
+
+	public int getNum_comentarios()
+	{
+		return this.listaComentarios.size();
 	}
 	public void infos() //Método pra printar todas as informações do objeto criado como pedido na especificação do trabalho \\ sera que o nome é toString?
 	{
