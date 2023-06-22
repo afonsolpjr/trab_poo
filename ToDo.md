@@ -55,7 +55,7 @@ retornem se a operação foi realizada com sucesso ou não.
 # PostVideo
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/metodos
-- [] Getters e setters pertinentes
+- [x] Getters e setters pertinentes
 - [x] Implementar adicionaVideo
 - [x] Implementar posta
 - [x] Implementar comenta
@@ -84,7 +84,7 @@ na lista_comentarios do objeto.
 # PostFoto
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/metodos
-- [] Getters e setters pertinentes 
+- [x] Getters e setters pertinentes 
 - [x] Implementar adicionaFoto
 - [x] Implementar excluiFoto
 - [x] Implementar posta
@@ -116,7 +116,7 @@ na lista_comentarios do objeto.
 # Comentario
 ## A fazer:
 - [x] Criar arquivo e definições de atributos/metodos
-- [] Getters e setters pertinentes
+- [x] Getters e setters pertinentes
 
 A classe Comentario contém as informações de um comentário através dos
 seguintes atributos:
@@ -152,8 +152,8 @@ todos os testes kkkkkkk
 - [x] Tentativa de postagem sem foto
 - [x] Tentativa de postagem com 5 fotos atribuídas
 - [x] Tentativa de postagem com 11 fotos atribuídas
-- [] Tentativa de criação de comentário em uma postagem com foto
-- [] Tentativa de criação de comentário em uma postagem com vídeo
+- [x] Tentativa de criação de comentário em uma postagem com foto
+- [x] Tentativa de criação de comentário em uma postagem com vídeo
 - [] Tentativa de criação de vídeo inválido
 - [] Tentativa de criação de foto inválida
 
