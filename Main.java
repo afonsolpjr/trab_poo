@@ -192,9 +192,10 @@ public static void main(String[] args)
         {
                 System.out.println("[Insira um número válido]");
         }
-        Postavel post1 = null;
-        PostFoto post2 = null;
-        if(opt==1)
+        
+        Postavel post1 = null; // Se escolher inserir manualmente, usa-se este objeto.
+        PostFoto post2 = null;  // Se escolher os pré-definidos, este é utilizado.
+        if(opt==1)      
         {
                 do
                 {
@@ -338,6 +339,26 @@ public static void main(String[] args)
 
     private static void testinvalid_video()
     {
+        Postavel post;
+        int opt;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println(
+                "\nDigite [1] para inserir uma URL manualmente, " +
+                "ou [2] utilizar um endereço inválido \"Videoinvalido.avi\" .");
+        
+        try
+        {
+                opt = input.nextInt();
+                input.nextLine();
+                if(opt!= 0 && opt != 1 && opt !=2)
+                        throw new InputMismatchException();
+        }
+        catch(InputMismatchException e)
+        {
+                System.out.println("[Insira um número válido]");
+        }        
+        
 
     }
 

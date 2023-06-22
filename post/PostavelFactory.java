@@ -126,11 +126,9 @@ public class PostavelFactory {
             
             case 3:
                 post_foto = null;
-                input.close();
                 return null;                   
             
             case 4: // Adicionei case 4
-                input.close();
                 return post_foto;
             }
         }
@@ -201,11 +199,9 @@ public class PostavelFactory {
             
             case 3:
                 post_video = null;
-                input.close();
                 return null;
 
             case 4:
-                input.close();
                 return post_video;
             }
 
