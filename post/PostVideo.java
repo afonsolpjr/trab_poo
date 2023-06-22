@@ -42,11 +42,9 @@ public class PostVideo extends Postavel
 	}
 	
 	@Override
-	public boolean comenta() //Não sei se a prof vai querer que o comentario seja feito totalmente na função, ou se eu recebo ele como argumento
+	public boolean comenta(String texto) //Não sei se a prof vai querer que o comentario seja feito totalmente na função, ou se eu recebo ele como argumento
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.printf("Comentário: ");
-		Comentario comentario = new Comentario(sc.next());
+		Comentario comentario = new Comentario(texto);
 		this.lista_comentarios.add(comentario);
 		return true;
 	}
@@ -89,6 +87,16 @@ public class PostVideo extends Postavel
 				System.out.println("\n\t Comentário:\n" + lista_comentarios.get(i).gettexto());
 			}
 		}
+	}
+	@Override
+	public int getNum_comentarios()
+	{
+		return this.lista_comentarios.size();
+	}
+	@Override
+	public String getUltimoComent()
+	{
+		return this.lista_comentarios.get(this.lista_comentarios.size()-1).gettexto();
 	}
 	@Override
 	public void infos()
