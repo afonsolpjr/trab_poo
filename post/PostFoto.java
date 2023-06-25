@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import trab_poo.recurso.Foto;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
-
+import java.util.InputMismatchException;
 class Comentario // Precisa ser default para evitar problemas de compilação (Herança)
 	{
 		private LocalDate data = LocalDate.now();
@@ -64,6 +64,7 @@ public class PostFoto extends Postavel
 	private String localizacao;
 	private LocalDateTime data_postagem = LocalDateTime.now();
 	private ArrayList<Comentario> listaComentarios = new ArrayList<Comentario>();
+	private int qtde_fixados=0;
 	
 	public PostFoto()
 	{
@@ -122,19 +123,6 @@ public class PostFoto extends Postavel
 	 		return true;
 		}
 	}
-	
-	@Override
-	public boolean comenta(String texto)
-	{
-		Comentario comentario = new Comentario(texto);
-		this.listaComentarios.add(comentario);
-		return true;
-	}
-	
-	public String getUltimoComent()
-	{
-		return this.listaComentarios.get(this.listaComentarios.size()-1).gettexto();
-	}
 
 	public void printaFotos()
 	{
@@ -160,22 +148,6 @@ public class PostFoto extends Postavel
 		return this.qtde_fotos;
 	}
 
-	public void printaComentario()
-	{
-		if(this.listaComentarios.size()==0)
-		{
-			System.out.println("\n\t [*~*~ Não há comentários nesta postagem. *~*~]\n");
-		}
-		else
-		{
-			int i;
-			System.out.println("[*~*~*Lista de comentários*~*~*~]");
-			for (i=0;i<this.listaComentarios.size();i++)
-			{
-				System.out.println("\n\t Comentário:\n" + listaComentarios.get(i).gettexto());
-			}
-		}
-	}
 	public boolean setlocalizacao()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -200,12 +172,109 @@ public class PostFoto extends Postavel
 	{
 		return this.data_postagem;
 	}
+//Parte dos comentários
+	@Override
+	public boolean comenta(String texto)
+	{
+		Comentario comentario = new Comentario(texto);
+		this.listaComentarios.add(comentario);
+		return true;
+	}
+
+	public void printaComentario()
+	{
+		if(this.listaComentarios.size()==0)
+		{
+			System.out.println("\n\t [*~*~ Não há comentários nesta postagem. *~*~]\n");
+		}
+		else
+		{
+			int i;
+			System.out.println("[*~*~*Lista de comentários*~*~*~]");
+			for (i=0;i<this.listaComentarios.size();i++)
+			{
+				System.out.printf("\n\t Comentário:\n[%d] %s\n" ,i,listaComentarios.get(i).gettexto());
+			}
+		}
+	}
+	public String getUltimoComent()
+	{
+		return this.listaComentarios.get(this.listaComentarios.size()-1).gettexto();
+	}
 
 	public int getNum_comentarios()
 	{
 		return this.listaComentarios.size();
 	}
+
+	public boolean fixaComentario()
+	{
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.printaComentario();
+		System.out.println("Qual comentário deseja fixar?");
+		try //validando entrada do usuario
+		{
+                
+			opcao = input.nextInt();
+               
+		       	if(opcao<0 || opcao>this.listaComentarios.size())
+			{
+			       	throw new InputMismatchException();
+			}
+	 		input.nextLine();
+	       	}
+	       	catch(InputMismatchException e)
+		{
+		       	input.nextLine();
+			System.out.println("\n\t[Valor Inválido!]");
+			return false;
+	       	}
+
+		if(this.listaComentarios.get(opcao).fixaComentario())
+		{
+			this.qtde_fixados++;
+			return true;
+		}
+		else return false;
+	}
+
+	public boolean desfixaComentario()
+	{
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.printaComentario();
+		System.out.println("Qual comentário deseja desfixar?");
+		try //validando entrada do usuario
+		{
+                
+			opcao = input.nextInt();
+               
+		       	if(opcao<0 || opcao>this.listaComentarios.size())
+			{
+			       	throw new InputMismatchException();
+			}
+	 		input.nextLine();
+	       	}
+	       	catch(InputMismatchException e)
+		{
+		       	input.nextLine();
+			System.out.println("\n\t[Valor Inválido!]");
+			return false;
+	       	}
+
+		if(this.listaComentarios.get(opcao).retiraFixado())
+		{
+			this.qtde_fixados--;
+			return true;
+		}
+		else return false;
+	}
 	
+	public int getqtde_fixados()
+	{
+		return this.qtde_fixados;
+	}
 	public void infos() //Método pra printar todas as informações do objeto criado como pedido na especificação do trabalho \\ sera que o nome é toString?
 	{
 		System.out.println("\n\t[*~*~Informações do objeto da classe PostFoto *~*~]\n");
