@@ -1,6 +1,7 @@
 package trab_poo.post;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import trab_poo.post.PostFoto;
 import trab_poo.recurso.Video;
@@ -10,7 +11,7 @@ public class PostVideo extends Postavel
 	private Video video;
 	private LocalDateTime data_postagem = LocalDateTime.now();
 	private ArrayList<Comentario> lista_comentarios = new ArrayList<Comentario>();
-
+	private int qtde_fixados;
 	public PostVideo()
 	{
 	}
@@ -84,7 +85,7 @@ public class PostVideo extends Postavel
 			System.out.println("[*~*~*Lista de comentários*~*~*~]");
 			for (i=0;i<this.lista_comentarios.size();i++)
 			{
-				System.out.println("\n\t Comentário:\n" + lista_comentarios.get(i).gettexto());
+				System.out.printf("\n\t Comentário:\n[%d] %s\n" ,i, lista_comentarios.get(i).gettexto());
 			}
 		}
 	}
@@ -97,6 +98,70 @@ public class PostVideo extends Postavel
 	public String getUltimoComent()
 	{
 		return this.lista_comentarios.get(this.lista_comentarios.size()-1).gettexto();
+	}
+	@Override	
+	public boolean fixaComentario()
+	{
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.printaComentario();
+		System.out.println("Qual comentário deseja fixar?");
+		try //validando entrada do usuario
+		{
+                
+			opcao = input.nextInt();
+               
+		       	if(opcao<0 || opcao>this.lista_comentarios.size())
+			{
+			       	throw new InputMismatchException();
+			}
+	 		input.nextLine();
+	       	}
+	       	catch(InputMismatchException e)
+		{
+		       	input.nextLine();
+			System.out.println("\n\t[Valor Inválido!]");
+			return false;
+	       	}
+
+		if(this.lista_comentarios.get(opcao).fixaComentario())
+		{
+			this.qtde_fixados++;
+			return true;
+		}
+		else return false;
+	}
+	@Override
+	public boolean desfixaComentario()
+	{
+		int opcao;
+		Scanner input = new Scanner(System.in);
+		this.printaComentario();
+		System.out.println("Qual comentário deseja desfixar?");
+		try //validando entrada do usuario
+		{
+                
+			opcao = input.nextInt();
+               
+		       	if(opcao<0 || opcao>this.lista_comentarios.size())
+			{
+			       	throw new InputMismatchException();
+			}
+	 		input.nextLine();
+	       	}
+	       	catch(InputMismatchException e)
+		{
+		       	input.nextLine();
+			System.out.println("\n\t[Valor Inválido!]");
+			return false;
+	       	}
+
+		if(this.lista_comentarios.get(opcao).retiraFixado())
+		{
+			this.qtde_fixados--;
+			return true;
+		}
+		else return false;
 	}
 	@Override
 	public void infos()
