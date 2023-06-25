@@ -339,13 +339,25 @@ public static void main(String[] args)
     private static boolean testcoment_foto()
     {
         Scanner sc = new Scanner(System.in);
+        boolean fixa,desfixa;
         Postavel post = PostavelFactory.getPostavel("POSTFOTO");
         System.out.printf("Comentario: ");
         String comentario = sc.next();
         int num_anterior = post.getNum_comentarios();
 
         System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
-        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) return true;
+        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) 
+        {
+                post.printaComentario();
+                fixa = post.fixaComentario();
+                desfixa = post.desfixaComentario();
+                if(fixa && desfixa) 
+                {
+                        System.out.println("Teste concluído com sucesso");
+                        return true;
+                }
+                else return false;
+        }
         else return false;
     }
 
@@ -353,6 +365,7 @@ public static void main(String[] args)
     {
         Scanner sc = new Scanner (System.in);
         Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
+        boolean fixa,desfixa;
 
         System.out.printf("Comentario: ");
         String comentario = sc.next();
@@ -360,7 +373,18 @@ public static void main(String[] args)
         int num_anterior = post.getNum_comentarios();
         
         System.out.println("Teste comentário: "+post.comenta(comentario));
-        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) return true;
+        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1)
+        {
+                post.printaComentario();
+                fixa = post.fixaComentario();
+                desfixa = post.desfixaComentario();
+                if(fixa && desfixa) 
+                {
+                        System.out.println("Teste concluído com sucesso");
+                        return true;
+                }
+                else return false;
+        }
         else return false;
     }
 
