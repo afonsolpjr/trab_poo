@@ -28,6 +28,11 @@ public class PostavelFactory {
             //instanciacao de postvideo
             return getPostVideo();
         }
+        else if(tipo.equals("POSTTEXTO"))
+        {
+            System.out.println("\n\t[*~*~Não existe posttexto*~*~]\n");
+            return null;
+        }
 
         return null;
     }
