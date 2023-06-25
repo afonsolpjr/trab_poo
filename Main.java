@@ -36,11 +36,11 @@ public static void main(String[] args)
         try //validando entrada do usuario
         {
                 opcao = input.nextInt();
-                input.nextLine();
                 if(opcao<0 || opcao>10)
                 {
                         throw new InputMismatchException();
                 }
+                input.nextLine();
         }
         catch(InputMismatchException e)
         {
@@ -124,11 +124,11 @@ public static void main(String[] args)
         }
         catch(TooFewException e)
         {
-                System.out.println("Erro: "+e);
+                System.out.println(e);
         }
         catch(TooManyException e)
         {
-                System.out.println("Erro: "+e);
+                System.out.println(e);
         }
         finally
         {
@@ -146,7 +146,7 @@ public static void main(String[] args)
         }
         catch(TooFewException e)
         {
-                System.out.println("Erro: "+e);
+                System.out.println(e);
         }
         finally
         {
@@ -163,11 +163,11 @@ public static void main(String[] args)
 	}
 	catch (TooFewException e)
 	{
-	        System.out.println("Erro: "+e);
+	        System.out.println(e);
 	}
 	catch (TooManyException e)
 	{
-		System.out.println("Erro:"+e);
+		System.out.println(e);
 	}
         finally
         {
@@ -188,9 +188,9 @@ public static void main(String[] args)
         try
         {
                 opt = input.nextInt();
-                input.nextLine();
                 if(opt!= 0 && opt != 1 && opt !=2)
                         throw new InputMismatchException();
+                input.nextLine();
                 
         }
         catch(InputMismatchException e)
@@ -244,11 +244,11 @@ public static void main(String[] args)
 	}
 	catch (TooFewException e)
 	{
-	        System.out.println("Erro: "+e);
+	        System.out.println(e);
 	}
 	catch (TooManyException e)
 	{
-		System.out.println("Erro:"+e);
+		System.out.println(e);
 	}
         finally
         {
@@ -272,9 +272,10 @@ public static void main(String[] args)
         try
         {
                 opt = input.nextInt();
-                input.nextLine();
                 if(opt!= 0 && opt != 1 && opt !=2)
                         throw new InputMismatchException();
+                input.nextLine();
+                
                 
         }
         catch(InputMismatchException e)
@@ -320,11 +321,11 @@ public static void main(String[] args)
 	}
 	catch (TooFewException e)
 	{
-	        System.out.println("Erro: "+e);
+	        System.out.println(e);
 	}
 	catch (TooManyException e)
 	{
-		System.out.println("Erro:"+e);
+		System.out.println(e);
 	}
         finally
         {
@@ -373,9 +374,10 @@ public static void main(String[] args)
         try
         {
                 opt = input.nextInt();
-                input.nextLine();
                 if(opt!= 0 && opt != 1 && opt !=2)
                         throw new InputMismatchException();
+                input.nextLine();
+                
         }
         catch(InputMismatchException e)
         {
@@ -395,7 +397,7 @@ public static void main(String[] args)
                 }
                 catch(TooFewException e)
                 {
-                        System.out.println("[Erro: " + e +']');
+                        System.out.println( e );
                 }
         }
         else if(opt==2)
@@ -428,9 +430,9 @@ public static void main(String[] args)
         try
         {
                 opt = input.nextInt();
-                input.nextLine();
                 if(opt!= 0 && opt != 1 && opt !=2)
                         throw new InputMismatchException();
+                input.nextLine();
         }
         catch(InputMismatchException e)
         {
@@ -450,11 +452,11 @@ public static void main(String[] args)
                 }
                 catch(TooFewException e)
                 {
-                        System.out.println("[Erro: " + e +']');
+                        System.out.println( e);
                 }
                 catch(TooManyException e)
                 {
-                        System.out.println("[Erro: " + e +']');
+                        System.out.println( e);
                 }
         }
         else if(opt==2)

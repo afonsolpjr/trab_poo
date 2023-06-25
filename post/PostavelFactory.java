@@ -60,11 +60,11 @@ public class PostavelFactory {
             try /* Valida entrada do usuário */
             {
                 opcao = input.nextInt();
-                input.nextLine();
                 if(opcao<1 || opcao>4) //Adicionei o 4 à validação
                 {
                     throw new InputMismatchException();
                 }
+                input.nextLine();
             }
             catch(InputMismatchException e)
             {
@@ -163,9 +163,10 @@ public class PostavelFactory {
             try //valida entrada
             {
                 opcao = input.nextInt();
-                input.nextLine();
                 if(opcao < 0 || opcao >4 )
                     throw new InputMismatchException();
+                input.nextLine();
+                
             }       
             catch(InputMismatchException e)
             {
