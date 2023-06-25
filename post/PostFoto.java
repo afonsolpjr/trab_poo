@@ -101,7 +101,7 @@ public class PostFoto extends Postavel
 				return fotos.get(i);
 			}
 		}
-		System.out.println("Foto não está contida no Post");
+		System.out.println("\n\t[Foto não está contida no Post]");
 		return null;
 	}
 
@@ -118,7 +118,7 @@ public class PostFoto extends Postavel
 	 	else 
 	 	{
 			this.data_postagem = LocalDateTime.now();
-	 		System.out.println("Foto Postada com sucesso");
+	 		System.out.println("\n[Foto Postada com sucesso]");
 	 		return true;
 		}
 	}
@@ -179,7 +179,7 @@ public class PostFoto extends Postavel
 	public boolean setlocalizacao()
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Qual local gostaria de adicionar à foto?");
+		System.out.println("Qual local gostaria de adicionar à postagem?");
 		String local = sc.nextLine();
 		this.localizacao = local;
 		return true;
@@ -205,6 +205,7 @@ public class PostFoto extends Postavel
 	{
 		return this.listaComentarios.size();
 	}
+	
 	public void infos() //Método pra printar todas as informações do objeto criado como pedido na especificação do trabalho \\ sera que o nome é toString?
 	{
 		System.out.println("\n\t[*~*~Informações do objeto da classe PostFoto *~*~]\n");

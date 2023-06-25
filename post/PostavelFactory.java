@@ -93,7 +93,7 @@ public class PostavelFactory {
                     System.out.println("\n\t[Foto adicionada com sucesso!]\n");
                     post_foto.adicionaFotos(foto);
                 }
-                catch(Exception e)
+                catch(IllegalArgumentException e)
                 {
                     System.out.println(e.getMessage());
                 }  

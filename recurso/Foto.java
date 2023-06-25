@@ -17,7 +17,7 @@ public class Foto extends Recurso{
         return this.resolucao;
     }
 
-    public boolean validaUrlRecurso(String url) // a fazer
+    public boolean validaUrlRecurso(String url) 
     {
         /*método validaUrlRecurso comparando se a extensão da
         URL termina em '.jpg', ‘.png' e ‘.bmp’. 

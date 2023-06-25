@@ -121,6 +121,8 @@ public static void main(String[] args)
         try 
         {
                 post.posta();
+                post.infos();
+                return post;
         }
         catch(TooFewException e)
         {
@@ -134,7 +136,7 @@ public static void main(String[] args)
         {
                 post.infos();
         }
-        return post;
+        return null;
     }
 
     private static void testpost_semvideo()
@@ -237,10 +239,14 @@ public static void main(String[] args)
         }
 	try
 	{
-	        if(post1==null)
+	        if(post1==null){
                         post2.posta();
-                else
+                        post2.infos();
+                        return post2;}
+                else{
                         post1.posta();
+                        post1.infos();
+                        return post1;}
 	}
 	catch (TooFewException e)
 	{
@@ -257,10 +263,7 @@ public static void main(String[] args)
                 else
                         post1.infos();
         }
-        if(post1==null)
-                return post2;
-        else
-                return post1;
+        return null;
     }
 
     private static void testpost_11fotos()
@@ -363,8 +366,9 @@ public static void main(String[] args)
 
     private static void testinvalid_video()
     {
-        Postavel post = null;
         int opt;
+        String url = null;
+        Video video = null;
         Scanner input = new Scanner(System.in);
 
         System.out.println(
@@ -388,23 +392,33 @@ public static void main(String[] args)
         
         if(opt==1)
         {
-                post = PostavelFactory.getPostavel("POSTVIDEO");
-                if(post==null)
-                        return;
+                System.out.print("\n\t[Insira o URL do video]\n" +
+                    "\tURL: ");
+
+                try // valida entrada
+                {
+                    url = input.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("\n\t[Insira um valor válido!]");
+                }
+
                 try
                 {
-                        ((PostVideo)post).posta();
+                    video = new Video(url);
+                    System.out.println("\n\t[Video criado com sucesso!]\n");
                 }
-                catch(TooFewException e)
+                catch(IllegalArgumentException e)
                 {
-                        System.out.println( e );
-                }
+                    System.out.println(e.getMessage());
+                }  
         }
         else if(opt==2)
         {
                 try
                 {
-                        Video video_invalido = new Video("Videoinvalido.avi");                
+                        video = new Video("Videoinvalido.avi");                
                 }
                 catch(IllegalArgumentException e)
                 {
@@ -419,7 +433,8 @@ public static void main(String[] args)
 
     private static void testinvalid_foto()
     {
-        Postavel post = null;
+        String url = null;
+        Foto foto = null;
         int opt;
         Scanner input = new Scanner(System.in);
 
@@ -443,27 +458,33 @@ public static void main(String[] args)
         
         if(opt==1)
         {
-                post = PostavelFactory.getPostavel("POSTFOTO");
-                if(post==null)
-                        return;
+                System.out.print("\n\t[Insira o URL da foto]\n" +
+                    "\tURL: ");
+
+                try // valida entrada
+                {
+                    url = input.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                    System.out.println("\n\t[Insira um valor válido!]");
+                }
+
                 try
                 {
-                        post.posta();
+                    foto = new Foto(url);
+                    System.out.println("\n\t[Foto criada com sucesso!]\n");
                 }
-                catch(TooFewException e)
+                catch(IllegalArgumentException e)
                 {
-                        System.out.println( e);
-                }
-                catch(TooManyException e)
-                {
-                        System.out.println( e);
+                    System.out.println(e.getMessage());
                 }
         }
         else if(opt==2)
         {
                 try
                 {
-                        Foto foto_invalida = new Foto("FotoInvalida.img");                
+                        foto = new Foto("FotoInvalida.img");                
                 }
                 catch(IllegalArgumentException e)
                 {
