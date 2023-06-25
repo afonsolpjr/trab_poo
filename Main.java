@@ -343,22 +343,30 @@ public static void main(String[] args)
         Postavel post = PostavelFactory.getPostavel("POSTFOTO");
         System.out.printf("Comentario: ");
         String comentario = sc.next();
-        int num_anterior = post.getNum_comentarios();
-
-        System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
-        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) 
+        try
         {
-                post.printaComentario();
-                fixa = post.fixaComentario();
-                desfixa = post.desfixaComentario();
-                if(fixa && desfixa) 
+                int num_anterior = post.getNum_comentarios();
+
+                System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
+                if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) 
                 {
-                        System.out.println("Teste concluído com sucesso");
-                        return true;
+                        post.printaComentario();
+                        fixa = post.fixaComentario();
+                        desfixa = post.desfixaComentario();
+                        if(fixa && desfixa) 
+                        {
+                                System.out.println("Teste concluído com sucesso");
+                                return true;
+                        }
+                        else return false;
                 }
                 else return false;
         }
-        else return false;
+        catch(NullPointerException e)
+        {
+                System.out.println("Post cancelado");
+                return false;
+        }
     }
 
     private static boolean testcoment_video()
@@ -369,23 +377,30 @@ public static void main(String[] args)
 
         System.out.printf("Comentario: ");
         String comentario = sc.next();
-
-        int num_anterior = post.getNum_comentarios();
-        
-        System.out.println("Teste comentário: "+post.comenta(comentario));
-        if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1)
+        try
         {
-                post.printaComentario();
-                fixa = post.fixaComentario();
-                desfixa = post.desfixaComentario();
-                if(fixa && desfixa) 
+                int num_anterior = post.getNum_comentarios();
+                
+                System.out.println("Teste comentário: "+post.comenta(comentario));
+                if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1)
                 {
-                        System.out.println("Teste concluído com sucesso");
-                        return true;
+                        post.printaComentario();
+                        fixa = post.fixaComentario();
+                        desfixa = post.desfixaComentario();
+                        if(fixa && desfixa) 
+                        {
+                                System.out.println("Teste concluído com sucesso");
+                                return true;
+                        }
+                        else return false;
                 }
                 else return false;
         }
-        else return false;
+        catch(NullPointerException e)
+        {
+                System.out.println("Post cancelado");
+                return false;
+        }
     }
 
     private static void testinvalid_video()
