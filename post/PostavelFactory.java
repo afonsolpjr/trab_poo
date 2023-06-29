@@ -30,7 +30,7 @@ public class PostavelFactory {
         }
         else
         {
-            System.out.println("\n\t[*~*~Criação de postagem inválida. Tipo desconhecido*~*~\n");
+            System.out.println("\n\t[*~*~Criação de postagem inválida. Tipo desconhecido*~*~\n]");
             return null;
         }
     }
