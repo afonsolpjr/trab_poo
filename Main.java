@@ -7,11 +7,12 @@ import java.util.InputMismatchException;
 
 
 public class Main {
-    
+
+        private static ArrayList<Postavel> posts = new ArrayList<Postavel>();
+
 public static void main(String[] args)
 {
     int opcao;
-    ArrayList<Postavel> posts = new ArrayList<Postavel>();
     Postavel post;
     Scanner input = new Scanner(System.in);
 
@@ -30,13 +31,14 @@ public static void main(String[] args)
             "\n[8] Tentativa de criação de comentário em uma postagem com vídeo" +
             "\n[9] Tentativa de criação de vídeo inválido" +
             "\n[10] Tentativa de criação de foto inválida" +
+            "\n[11] Listar objetos instanciados" +
             "\n[0] para sair." +
             "\n\nInsira o numero da opção: ");
         
         try //validando entrada do usuario
         {
                 opcao = input.nextInt();
-                if(opcao<0 || opcao>10)
+                if(opcao<0 || opcao>11)
                 {
                         throw new InputMismatchException();
                 }
@@ -50,14 +52,13 @@ public static void main(String[] args)
         
         switch(opcao)
         {
-        case 0:
-                return;
         case 1:
                 testpost_texto();
                 break;
         case 2:
                 post = testpost_video();
                 if(post!=null)
+                        System.out.println(post!=null);
                         posts.add(post);
                 break;
         case 3:
@@ -86,8 +87,11 @@ public static void main(String[] args)
         case 10:
                 testinvalid_foto();
                 break;
+        case 11:
+                mostrar_posts(posts);
         }
     }
+    mostrar_posts(posts);
     input.close();
 }
 
@@ -336,13 +340,51 @@ public static void main(String[] args)
         }
     }
 
-    private static boolean testcoment_foto()
+    private static boolean testcoment_video()
     {
+        
         Scanner sc = new Scanner(System.in);
         boolean fixa,desfixa;
-        Postavel post = PostavelFactory.getPostavel("POSTFOTO");
-        System.out.printf("Comentario: ");
-        String comentario = sc.next();
+        int opcao=-1;
+        PostVideo post;
+        while(true)
+        {
+        mostrar_posts(posts);
+        System.out.println("[Insira o número do post que deseja, ou 0 para sair]\n");
+        try //validando entrada do usuario
+                {
+                        opcao = sc.nextInt();
+                        if(opcao<0 || opcao>10)
+                        {
+                                throw new InputMismatchException();
+                        }
+                        sc.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                        sc.nextLine();
+                        System.out.println("\n\t[Insira um valor válido!]");
+                }
+
+        if(opcao==0)
+        {
+                sc.close();
+                return false;
+        }
+        else if(posts.get(opcao-1) instanceof PostFoto)
+        {
+                System.out.println("\n\t [ERRO! Escolha um PostVideo!]");
+        }
+        else if(posts.get(opcao-1) instanceof PostVideo)
+        {
+                post = (PostVideo)posts.get(opcao-1);
+                break;
+        }
+        
+        }        
+                
+        System.out.printf(" Insira o Comentario: ");
+        String comentario = sc.nextLine();
         try
         {
                 int num_anterior = post.getNum_comentarios();
@@ -350,7 +392,6 @@ public static void main(String[] args)
                 System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
                 if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) 
                 {
-                        post.printaComentario();
                         fixa = post.fixaComentario();
                         desfixa = post.desfixaComentario();
                         if(fixa && desfixa) 
@@ -358,43 +399,15 @@ public static void main(String[] args)
                                 System.out.println("Teste concluído com sucesso");
                                 return true;
                         }
-                        else return false;
+                        else 
+                        {
+                                return false;
+                        }
                 }
-                else return false;
-        }
-        catch(NullPointerException e)
-        {
-                System.out.println("Post cancelado");
-                return false;
-        }
-    }
-
-    private static boolean testcoment_video()
-    {
-        Scanner sc = new Scanner (System.in);
-        Postavel post = PostavelFactory.getPostavel("POSTVIDEO");
-        boolean fixa,desfixa;
-
-        System.out.printf("Comentario: ");
-        String comentario = sc.next();
-        try
-        {
-                int num_anterior = post.getNum_comentarios();
-                
-                System.out.println("Teste comentário: "+post.comenta(comentario));
-                if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1)
+                else
                 {
-                        post.printaComentario();
-                        fixa = post.fixaComentario();
-                        desfixa = post.desfixaComentario();
-                        if(fixa && desfixa) 
-                        {
-                                System.out.println("Teste concluído com sucesso");
-                                return true;
-                        }
-                        else return false;
+                        return false;
                 }
-                else return false;
         }
         catch(NullPointerException e)
         {
@@ -534,5 +547,104 @@ public static void main(String[] args)
                 return;
     }
 
-    
+    private static void mostrar_posts(ArrayList<Postavel> posts)
+    {
+        int i;
+        if(posts.size()==0)
+        {
+                System.out.println("\n[Não há objetos Postaveis instanciados]\n");
+                return;
+        }
+        System.out.println("\n[Lista de posts instanciados]\n\n");
+        for(i=0;i<posts.size();i++)
+        {
+                if(posts.get(i) instanceof PostVideo )
+                {
+                        System.out.println("["+(i+1)+"] Postagem de video" );
+                }
+                else if(posts.get(i) instanceof PostFoto)
+                {
+                        System.out.println("["+(i+1)+"] Postagem de foto" );
+                }
+                
+        }
+        System.out.println("\n");
+    }
+
+    private static boolean testcoment_foto()
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean fixa,desfixa;
+        int opcao=-1;
+        PostFoto post;
+        while(true)
+        {
+        mostrar_posts(posts);
+        System.out.println("[Insira o número do post que deseja, ou 0 para sair]\n");
+        try //validando entrada do usuario
+                {
+                        opcao = sc.nextInt();
+                        if(opcao<0 || opcao>10)
+                        {
+                                throw new InputMismatchException();
+                        }
+                        sc.nextLine();
+                }
+                catch(InputMismatchException e)
+                {
+                        sc.nextLine();
+                        System.out.println("\n\t[Insira um valor válido!]");
+                }
+
+        if(opcao==0)
+        {
+                return false;
+        }
+        else if(posts.get(opcao-1) instanceof PostVideo)
+        {
+                System.out.println("\n\t [ERRO! Escolha um PostFoto!]");
+        }
+        else if(posts.get(opcao-1) instanceof PostFoto)
+        {
+                post = (PostFoto)posts.get(opcao-1);
+                break;
+        }
+        
+        }        
+                
+        System.out.printf(" Insira o Comentario: ");
+        String comentario = sc.nextLine();
+        try
+        {
+                int num_anterior = post.getNum_comentarios();
+
+                System.out.println("Teste comentário: "+post.comenta(comentario)); //Comenta
+                if(post.getUltimoComent().equals(comentario) && post.getNum_comentarios()-num_anterior==1) 
+                {
+                        fixa = post.fixaComentario();
+                        desfixa = post.desfixaComentario();
+                        if(fixa && desfixa) 
+                        {
+                                System.out.println("Teste concluído com sucesso");
+                                return true;
+                        }
+                        else 
+                        {
+                                return false;
+                        }
+                }
+                else
+                {
+                        return false;
+                }
+        }
+        catch(NullPointerException e)
+        {
+                System.out.println("Post cancelado");
+                return false;
+        }
+    }
+
 }
+
+

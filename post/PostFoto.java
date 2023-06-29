@@ -218,50 +218,53 @@ public class PostFoto extends Postavel
                 
 			opcao = input.nextInt();
                
-		       	if(opcao<0 || opcao>this.listaComentarios.size())
+		    if(opcao<0 || opcao>this.listaComentarios.size())
 			{
 			       	throw new InputMismatchException();
 			}
 	 		input.nextLine();
-	       	}
-	       	catch(InputMismatchException e)
+	    }
+		catch(InputMismatchException e)
 		{
-		       	input.nextLine();
+			input.nextLine();
 			System.out.println("\n\t[Valor Inválido!]");
 			return false;
-	       	}
+		}
 
 		if(this.listaComentarios.get(opcao).fixaComentario())
 		{
 			this.qtde_fixados++;
 			return true;
 		}
-		else return false;
+		else
+		{
+			return false;
+		}
 	}
 
 	public boolean desfixaComentario()
 	{
-		int opcao;
+		int opcao = 0;
 		Scanner input = new Scanner(System.in);
+
 		this.printaComentario();
 		System.out.println("Qual comentário deseja desfixar?");
+
 		try //validando entrada do usuario
 		{
-                
 			opcao = input.nextInt();
-               
-		       	if(opcao<0 || opcao>this.listaComentarios.size())
+		    if(opcao<0 || opcao>this.listaComentarios.size())
 			{
-			       	throw new InputMismatchException();
+				throw new InputMismatchException();
 			}
 	 		input.nextLine();
-	       	}
-	       	catch(InputMismatchException e)
-		{
-		       	input.nextLine();
+		}
+		catch(InputMismatchException e)
+		{	
+			input.nextLine();
 			System.out.println("\n\t[Valor Inválido!]");
 			return false;
-	       	}
+		}
 
 		if(this.listaComentarios.get(opcao).retiraFixado())
 		{

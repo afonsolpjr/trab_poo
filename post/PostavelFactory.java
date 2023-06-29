@@ -28,13 +28,11 @@ public class PostavelFactory {
             //instanciacao de postvideo
             return getPostVideo();
         }
-        else if(tipo.equals("POSTTEXTO"))
+        else
         {
-            System.out.println("\n\t[*~*~Não existe posttexto*~*~]\n");
+            System.out.println("\n\t[*~*~Criação de postagem inválida. Tipo desconhecido*~*~\n");
             return null;
         }
-
-        return null;
     }
 
     private static PostFoto getPostFoto()
