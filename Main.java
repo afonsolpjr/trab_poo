@@ -58,8 +58,10 @@ public static void main(String[] args)
         case 2:
                 post = testpost_video();
                 if(post!=null)
+                { 
                         System.out.println(post!=null);
                         posts.add(post);
+                }
                 break;
         case 3:
                 testpost_semvideo();
@@ -70,7 +72,10 @@ public static void main(String[] args)
         case 5:
                 post = testpost_5fotos();
                 if(post!=null)
+                {
+                        System.out.println(post!=null);
                         posts.add(post);
+                }
                 break;
         case 6:
                 testpost_11fotos();
@@ -125,7 +130,6 @@ public static void main(String[] args)
         try 
         {
                 post.posta();
-                post.infos();
                 return post;
         }
         catch(TooFewException e)
@@ -243,10 +247,12 @@ public static void main(String[] args)
         }
 	try
 	{
-	        if(post1==null){
+	        if(post1==null)
+                {
                         post2.posta();
                         post2.infos();
-                        return post2;}
+                        return post2;
+                }
                 else{
                         post1.posta();
                         post1.infos();
@@ -260,13 +266,7 @@ public static void main(String[] args)
 	{
 		System.out.println(e);
 	}
-        finally
-        {
-                if(post1==null)
-                        post2.infos();
-                else
-                        post1.infos();
-        }
+        
         return null;
     }
 
@@ -347,6 +347,11 @@ public static void main(String[] args)
         boolean fixa,desfixa;
         int opcao=-1;
         PostVideo post;
+        if(posts.size()==0)
+        {
+                System.out.println("[Para testar comentários, instancie um objeto postavel(Teste [2] ou [5])]\n");
+                return false;
+        }
         while(true)
         {
         mostrar_posts(posts);
@@ -577,6 +582,11 @@ public static void main(String[] args)
         boolean fixa,desfixa;
         int opcao=-1;
         PostFoto post;
+        if(posts.size()==0)
+        {
+                System.out.println("[Para testar comentários, instancie um objeto postavel(Teste [2] ou [5])]\n");
+                return false;
+        }
         while(true)
         {
         mostrar_posts(posts);

@@ -160,7 +160,7 @@ public class PostFoto extends Postavel
 	{
 		if(localizacao==null)
 		{
-			System.out.println("Localização não espeficicada");
+			System.out.println("\tLocalização não espeficicada");
 			return null;
 		}
 		else
